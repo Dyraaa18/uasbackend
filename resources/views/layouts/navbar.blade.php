@@ -7,5 +7,6 @@
         <li><a href="#schedule">Dokter</a></li>
         <li><a href="/booking">Booking</a></li>
         <li><a href="/consultation">Konsultasi</a></li>
+        <li><a href="/userprofile">profile</a></li>
     </ul>
 </nav>

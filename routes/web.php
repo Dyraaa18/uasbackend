@@ -26,6 +26,10 @@ Route::get('/booking', function () {
     return view('booking');
 })->name('Book')->middleware('auth');
 
+Route::get('/userprofile', function () {
+    return view('user');
+})->name('UP')->middleware('auth');
+
 Route::post('/send-email', [App\Http\Controllers\EmailController::class, 'send'])->name('send.email');
 
 // Auth Routes
@@ -35,9 +39,10 @@ Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-// Protected Routes
-Route::middleware('auth')->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', function () {
+        return view('user_profile');
+    })->name('profile');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
