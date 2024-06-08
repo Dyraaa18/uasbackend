@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AdminAuth\AdminAuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +51,18 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth:admin', 'verified'])->name('dashboard');
+
+Route::middleware('auth:admin')->group(function () {
+    // Rute logout untuk admin
+    Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+});
+
+// Rute login untuk admin
+Route::prefix('admin')->group(function () {
+    Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('loginadmin');
+    Route::post('/admin/login', [AdminAuthController::class, 'loginadmin']);
+});
