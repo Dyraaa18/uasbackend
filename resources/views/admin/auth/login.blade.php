@@ -5,7 +5,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="{{ route('loginadmin') }}" method="POST">
+    <form action="{{ route('admin.login') }}" method="POST">
         @csrf
         <div>
             <label>Email</label>
@@ -23,5 +23,6 @@
         </div>
         <button type="submit">Login</button>
     </form>
+    <p>Ini Login admin</p>
 </body>
 </html>

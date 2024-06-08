@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\AdminAuth\AdminAuthController;
-
+use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,32 +36,27 @@ Route::post('/send-email', [App\Http\Controllers\EmailController::class, 'send']
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
-
     Route::get('/profile', function () {
         return view('user_profile');
     })->name('profile');
-
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Auth Routes
-Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth:admin', 'verified'])->name('dashboard');
-
-Route::middleware('auth:admin')->group(function () {
-    // Rute logout untuk admin
-    Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+Route::middleware(['guest'])->group(function () {
+    Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthController::class, 'login']);
 });
 
-// Rute login untuk admin
-Route::prefix('admin')->group(function () {
-    Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('loginadmin');
-    Route::post('/admin/login', [AdminAuthController::class, 'loginadmin']);
+Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('admin.logout')->middleware('auth:admin');
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+    Route::get('admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
+    Route::post('admin/login', [AuthenticatedSessionController::class, 'store']);
 });
