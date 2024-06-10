@@ -23,18 +23,20 @@
                 </div>
             @endif
             <form action="{{ route('send.email') }}" method="post">
-                @csrf
-                <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required>
+    @csrf
+    <label for="name">Nama:</label>
+    <input type="text" id="name" name="name" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
 
-                <label for="message">Pesan:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+    <label for="message">Pesan:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
 
-                <button type="submit">Kirim</button>
-            </form>
+    <button type="submit">Kirim</button>
+</form>
+
+
         </section>
     </main>
 
