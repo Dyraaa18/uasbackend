@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
+use App\Http\Controllers\BookingController; // Tambahkan ini
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
         return view('user_profile');
     })->name('profile');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    // Tambahkan rute untuk menyimpan booking di sini
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
 // Auth Routes
