@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 </head>
 <body>
     @include('layouts.navbar')
+    <p>aakdhajd</p>
+    <p>aakdhajd</p>
+
+    <p>aakdhajd</p>
 
     <div>
         <p><strong>Username:</strong> {{ Auth::user()->name }}</p>
