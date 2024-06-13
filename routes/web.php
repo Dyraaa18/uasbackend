@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 
+use App\Http\Controllers\AdminController; // Update namespace untuk AdminController
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,10 +56,22 @@ Route::middleware(['guest'])->group(function () {
 Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('admin.logout')->middleware('auth:admin');
 
+
 Route::middleware(['auth:admin'])->group(function () {
+<<<<<<< Updated upstream
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+=======
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+    Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+    Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+});
+    
+
+Route::middleware(['guest:admin'])->group(function () {
+>>>>>>> Stashed changes
     Route::get('admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
     Route::post('admin/login', [AuthenticatedSessionController::class, 'store']);
 });
