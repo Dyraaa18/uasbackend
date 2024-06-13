@@ -61,39 +61,3 @@ footer {
 footer p {
     font-size: 0.8em;
 }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px;
-}
-
-nav .logo img {
-    height: 50px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-}
-
-nav ul li a:hover {
-    background-color: #575757;
-}
-
-ul li {
-    margin-bottom: 10px;
-}

@@ -5,6 +5,19 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController; // Pastikan Anda telah mengimpor AdminController
+use App\Http\Controllers\BookingController; // Tambahkan ini
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
 
 Route::get('/', function () {
     return view('home');
@@ -31,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
         return view('user_profile');
     })->name('profile');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    // Tambahkan rute untuk menyimpan booking di sini
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
 // Rute untuk pengguna yang belum login (guest)
