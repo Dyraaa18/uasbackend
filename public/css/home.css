@@ -41,7 +41,8 @@ form label {
     margin: 10px 0 5px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -66,5 +67,3 @@ section.center {
     margin: auto;
     max-width: 600px;
 }
-
-
