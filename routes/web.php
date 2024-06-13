@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
+use App\Http\Controllers\AdminController; // Pastikan Anda telah mengimpor AdminController
 use App\Http\Controllers\BookingController; // Tambahkan ini
 
 /*
@@ -16,6 +17,7 @@ use App\Http\Controllers\BookingController; // Tambahkan ini
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('home');
@@ -35,6 +37,7 @@ Route::get('/userprofile', function () {
 
 Route::post('/send-email', [App\Http\Controllers\EmailController::class, 'send'])->name('send.email');
 
+// Middleware untuk pengguna yang sudah login
 Route::middleware(['auth'])->group(function () {
     Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
     Route::get('/profile', function () {
@@ -46,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
-// Auth Routes
+// Rute untuk pengguna yang belum login (guest)
 Route::middleware(['guest'])->group(function () {
     Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [AuthController::class, 'register']);
@@ -54,15 +57,15 @@ Route::middleware(['guest'])->group(function () {
     Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::post('admin/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('admin.logout')->middleware('auth:admin');
-
+// Middleware untuk admin yang sudah login
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+    Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+    Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
 });
 
+// Rute untuk admin yang belum login (guest:admin)
 Route::middleware(['guest:admin'])->group(function () {
     Route::get('admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
     Route::post('admin/login', [AuthenticatedSessionController::class, 'store']);
