@@ -15,7 +15,7 @@ body {
 }
 
 .header {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -27,6 +27,7 @@ body {
     backdrop-filter: blur(10px);
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     z-index: 100;
+    margin-bottom: 1.25rem; /* Tambahkan jarak di bawah navbar */
 }
 
 .header::before {
