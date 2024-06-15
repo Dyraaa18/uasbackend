@@ -39,7 +39,7 @@ Route::post('/send-email', [App\Http\Controllers\EmailController::class, 'send']
 
 // Middleware untuk pengguna yang sudah login
 Route::middleware(['auth'])->group(function () {
-    Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor');
+    Route::get('/doctor', [DoctorController::class, 'publicIndex'])->name('doctor');
     Route::get('/profile', function () {
         return view('user_profile');
     })->name('profile');
@@ -63,6 +63,12 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
     Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
     Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+
+     // Rute untuk CRUD dokter
+     Route::get('/admin/doctors', [DoctorController::class, 'adminIndex'])->name('admin.doctors');
+     Route::post('/admin/doctor/store', [DoctorController::class, 'store'])->name('admin.storeDoctor');
+     Route::post('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
+     Route::delete('/admin/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
 });
 
 // Rute untuk admin yang belum login (guest:admin)
