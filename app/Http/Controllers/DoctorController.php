@@ -31,17 +31,19 @@ class DoctorController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
         ]);
 
-         // Proses upload gambar
-         if ($request->hasFile('image')) {
+        $imageName = null;
+
+        // Proses upload gambar
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('images'), $imageName);
         }
 
         $doctor = new Doctor();
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        $doctor->specialization = $request->specialization;
+        $doctor->name = $request->input('name');
+        $doctor->email = $request->input('email');
+        $doctor->specialization = $request->input('specialization');
         $doctor->image = $imageName; // Simpan nama file gambar ke dalam field image
 
         $doctor->save();
@@ -49,39 +51,23 @@ class DoctorController extends Controller
         return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil ditambahkan');
     }
 
-    // Update existing doctor
+    // Update dokter
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:doctors,email,' . $id,
+            'email' => 'required|email',
             'specialization' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
         ]);
 
         $doctor = Doctor::findOrFail($id);
-
-        // Proses upload gambar jika ada
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($doctor->image) {
-                Storage::delete('public/images/' . $doctor->image);
-            }
-            
-            $image = $request->file('image');
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $doctor->image = $imageName;
-        }
-
-        // Update data dokter
-        $doctor->name = $request->name;
-        $doctor->email = $request->email;
-        $doctor->specialization = $request->specialization;
+        $doctor->name = $request->input('name');
+        $doctor->email = $request->input('email');
+        $doctor->specialization = $request->input('specialization');
 
         $doctor->save();
 
-        return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil diperbarui');
+        return redirect()->route('admin.doctors')->with('success', 'Dokter berhasil di-update');
     }
 
     // Delete doctor

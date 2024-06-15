@@ -67,7 +67,7 @@ Route::middleware(['auth:admin'])->group(function () {
      // Rute untuk CRUD dokter
      Route::get('/admin/doctors', [DoctorController::class, 'adminIndex'])->name('admin.doctors');
      Route::post('/admin/doctor/store', [DoctorController::class, 'store'])->name('admin.storeDoctor');
-     Route::post('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
+     Route::put('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
      Route::delete('/admin/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
 });
 

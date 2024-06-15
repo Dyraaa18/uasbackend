@@ -9,6 +9,12 @@
 <body>
     <h1>CRUD Dokter</h1>
 
+    <nav>
+        <ul>
+            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+        </ul>
+    </nav>
+
     <!-- Tampilkan Pesan Sukses -->
     @if(session('success'))
         <div>{{ session('success') }}</div>
@@ -21,14 +27,14 @@
         @if (isset($doctor))
             @method('PUT')
         @endif
-        <input type="text" name="name" placeholder="Nama Dokter" value="{{ isset($doctor) ? $doctor->name : '' }}" required>
-        <input type="email" name="email" placeholder="Email Dokter" value="{{ isset($doctor) ? $doctor->email : '' }}" required>
-        <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ isset($doctor) ? $doctor->specialization : '' }}" required>
+        <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required>
+        <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required>
+        <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required>
         @if (isset($doctor) && $doctor->image)
             <p>Gambar saat ini:</p>
             <img src="{{ asset('images/' . $doctor->image) }}" alt="Gambar Dokter" style="max-width: 200px;">
         @endif
-        <input type="file" name="image" accept="image/*"> <!-- Input untuk upload gambar -->
+        <input type="file" name="image" accept="image/*">
         <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
     </form>
 
@@ -50,14 +56,7 @@
             @foreach($doctors as $doctor)
                 <tr>
                     <td>{{ $doctor->id }}</td>
-                    <td>
-                        <form method="POST" action="{{ route('admin.updateDoctor', $doctor->id) }}">
-                            @csrf
-                            @method('PUT')
-                            <input type="text" name="name" value="{{ $doctor->name }}">
-                            <button type="submit">Update</button>
-                        </form>
-                    </td>
+                    <td>{{ $doctor->name }}</td>
                     <td>{{ $doctor->email }}</td>
                     <td>{{ $doctor->specialization }}</td>
                     <td>
@@ -68,6 +67,17 @@
                         @endif
                     </td>
                     <td>{{ $doctor->created_at }}</td>
+                    <td>
+                    <form method="POST" action="{{ route('admin.updateDoctor', $doctor->id) }}">
+    @csrf
+    @method('PUT')
+    <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', $doctor->name) }}" required>
+    <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', $doctor->email) }}" required>
+    <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', $doctor->specialization) }}" required>
+    <button type="submit">Update</button>
+</form>
+
+                    </td>
                     <td>
                         <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
                             @csrf
