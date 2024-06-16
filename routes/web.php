@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\MedicineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,11 @@ Route::middleware(['auth'])->group(function () {
 
     // Rute untuk menyimpan booking
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+
+    Route::get('/medicine', [MedicineController::class, 'publicIndex'])->name('public.medicine');
+
+    Route::post('/buy-medicine', [MedicineController::class, 'buyMedicine'])->name('buyMedicine');
+
 });
 
 // Rute untuk pengguna yang belum login (guest)
@@ -72,5 +78,10 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/doctor/store', [DoctorController::class, 'store'])->name('admin.storeDoctor');
     Route::put('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
     Route::delete('/admin/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
+
+    Route::get('/admin/medicines', [MedicineController::class, 'adminIndex'])->name('admin.medicines');
+    Route::post('/admin/medicines', [MedicineController::class, 'store'])->name('admin.storeMedicine');
+    Route::put('/admin/medicines/{id}', [MedicineController::class, 'update'])->name('admin.updateMedicine');
+    Route::delete('/admin/medicines/{id}', [MedicineController::class, 'destroy'])->name('admin.deleteMedicine');
 });
 
