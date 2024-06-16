@@ -23,6 +23,7 @@
     <section>
         <!-- Form Tambah/Edit Dokter -->
         <h2>{{ isset($doctor) ? 'Edit Dokter' : 'Tambah Dokter' }}</h2>
+       <!-- Form Tambah/Edit -->
         <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
             @csrf
             @if (isset($doctor))
@@ -31,6 +32,8 @@
             <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
             <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
             <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
+            <input type="text" name="address" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required><br><br>
+            <input type="text" name="working_hours" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required><br><br>
             
             @if (isset($doctor) && $doctor->image)
                 <p>Gambar saat ini:</p>
@@ -40,6 +43,7 @@
             <input type="file" name="image" accept="image/*"><br><br>
             <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
         </form>
+
     </section>
 
     <section>
@@ -50,15 +54,19 @@
                 @foreach($doctors as $doctor)
                     <tr>
                         <td>
-                            <form method="POST" action="{{ route('admin.updateDoctor', $doctor->id) }}" enctype="multipart/form-data">
+                            <!-- Form Tambah/Edit -->
+                            <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', $doctor->name) }}" required><br><br>
-                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', $doctor->email) }}" required><br><br>
-                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', $doctor->specialization) }}" required><br><br>                    
+                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
+                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
+                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
+                                <input type="text" name="address" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required><br><br>
+                                <input type="text" name="working_hours" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required><br><br>                           
                                 <input type="file" name="image" accept="image/*"><br><br>
-                                <button type="submit">Update</button>
+                                <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
                             </form>
+
                         </td>
                         <td>
                             <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">

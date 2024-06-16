@@ -28,7 +28,9 @@ class DoctorController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:doctors',
             'specialization' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
+            'address' => 'required',
+            'working_hours' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $imageName = null;
@@ -44,6 +46,8 @@ class DoctorController extends Controller
         $doctor->name = $request->input('name');
         $doctor->email = $request->input('email');
         $doctor->specialization = $request->input('specialization');
+        $doctor->address = $request->input('address');
+        $doctor->working_hours = $request->input('working_hours');
         $doctor->image = $imageName; // Simpan nama file gambar ke dalam field image
 
         $doctor->save();
@@ -58,13 +62,19 @@ class DoctorController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'specialization' => 'required',
+            'address' => 'required',
+            'working_hours' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        
 
         $doctor = Doctor::findOrFail($id);
         $doctor->name = $request->input('name');
         $doctor->email = $request->input('email');
         $doctor->specialization = $request->input('specialization');
+        $doctor->address = $request->input('address');
+        $doctor->working_hours = $request->input('working_hours');
+
 
         if ($request->hasFile('image')) {
             // Delete existing image file if exists
