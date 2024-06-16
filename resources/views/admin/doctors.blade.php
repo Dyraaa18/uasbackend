@@ -12,6 +12,7 @@
     <nav>
         <ul>
             <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ route('admin.medicines') }}">CRUD Obat</a></li>
         </ul>
     </nav>
 
