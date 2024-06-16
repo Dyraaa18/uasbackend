@@ -9,6 +9,13 @@
 <body>
     <h1>Admin Dashboard</h1>
 
+
+    <nav>
+        <ul>
+            <li><a href="{{ route('admin.doctors') }}">CRUD Dokter</a></li>
+        </ul>
+    </nav>
+
     <!-- Tombol Logout -->
     <form method="POST" action="{{ route('admin.logout') }}">
         @csrf
