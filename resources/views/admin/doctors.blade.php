@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Dokter</title>
-    <!-- Tambahkan CSS atau framework yang Anda gunakan -->
+    <link rel="stylesheet" href="{{ asset('css/crudDoctor.css') }}"> <!-- Sesuaikan path dengan lokasi file CSS Anda -->
 </head>
 <body>
     <h1>CRUD Dokter</h1>
@@ -20,74 +20,57 @@
         <div>{{ session('success') }}</div>
     @endif
 
-    <!-- Form Tambah/Edit Dokter -->
-    <h2>{{ isset($doctor) ? 'Edit Dokter' : 'Tambah Dokter' }}</h2>
-    <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
-        @csrf
-        @if (isset($doctor))
-            @method('PUT')
-        @endif
-        <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required>
-        <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required>
-        <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required>
-        @if (isset($doctor) && $doctor->image)
-            <p>Gambar saat ini:</p>
-            <img src="{{ asset('images/' . $doctor->image) }}" alt="Gambar Dokter" style="max-width: 200px;">
-        @endif
-        <input type="file" name="image" accept="image/*">
-        <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
-    </form>
+    <section>
+        <!-- Form Tambah/Edit Dokter -->
+        <h2>{{ isset($doctor) ? 'Edit Dokter' : 'Tambah Dokter' }}</h2>
+        <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
+            @csrf
+            @if (isset($doctor))
+                @method('PUT')
+            @endif
+            <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
+            <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
+            <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
+            
+            @if (isset($doctor) && $doctor->image)
+                <p>Gambar saat ini:</p>
+                <img src="{{ asset('images/' . $doctor->image) }}" alt="Gambar Dokter" style="max-width: 200px;"><br><br>
+            @endif
+            
+            <input type="file" name="image" accept="image/*"><br><br>
+            <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
+        </form>
+    </section>
 
-    <!-- Tampilkan Daftar Dokter -->
-    <h2>Daftar Dokter</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Spesialisasi</th>
-                <th>Gambar</th>
-                <th>Dibuat Pada</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($doctors as $doctor)
-                <tr>
-                    <td>{{ $doctor->id }}</td>
-                    <td>{{ $doctor->name }}</td>
-                    <td>{{ $doctor->email }}</td>
-                    <td>{{ $doctor->specialization }}</td>
-                    <td>
-                        @if ($doctor->image)
-                            <img src="{{ asset('images/' . $doctor->image) }}" alt="{{ $doctor->name }}" style="max-width: 100px;">
-                        @else
-                            No image
-                        @endif
-                    </td>
-                    <td>{{ $doctor->created_at }}</td>
-                    <td>
-                    <form method="POST" action="{{ route('admin.updateDoctor', $doctor->id) }}">
-    @csrf
-    @method('PUT')
-    <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', $doctor->name) }}" required>
-    <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', $doctor->email) }}" required>
-    <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', $doctor->specialization) }}" required>
-    <button type="submit">Update</button>
-</form>
-
-                    </td>
-                    <td>
-                        <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <section>
+        <!-- Tampilkan Daftar Dokter -->
+        <h2>Daftar Dokter</h2>
+        <table border="1">
+            <tbody>
+                @foreach($doctors as $doctor)
+                    <tr>
+                        <td>
+                            <form method="POST" action="{{ route('admin.updateDoctor', $doctor->id) }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', $doctor->name) }}" required><br><br>
+                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', $doctor->email) }}" required><br><br>
+                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', $doctor->specialization) }}" required><br><br>                    
+                                <input type="file" name="image" accept="image/*"><br><br>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>

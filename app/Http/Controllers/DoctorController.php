@@ -58,12 +58,29 @@ class DoctorController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'specialization' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $doctor = Doctor::findOrFail($id);
         $doctor->name = $request->input('name');
         $doctor->email = $request->input('email');
         $doctor->specialization = $request->input('specialization');
+
+        if ($request->hasFile('image')) {
+            // Delete existing image file if exists
+            if ($doctor->image) {
+                $imagePath = public_path('images/' . $doctor->image);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+    
+            // Upload new image
+            $image = $request->file('image');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $doctor->image = $imageName;
+        }
 
         $doctor->save();
 
