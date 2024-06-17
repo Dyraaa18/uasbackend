@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\AntrianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/medicine', [MedicineController::class, 'publicIndex'])->name('public.medicine');
 
     Route::post('/buy-medicine', [MedicineController::class, 'buyMedicine'])->name('buyMedicine');
+
+    Route::get('/antrian', [AntrianController::class, 'create'])->name('antrian.create');
+    Route::post('/antrian/store', [AntrianController::class, 'store'])->name('antrian.store');
 
 });
 
