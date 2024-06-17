@@ -38,8 +38,8 @@
 
     <main>
         <section id="history">
-            <h2>Sejarah Singkat Klinik</h2>
-            <p>Klinik PeduliSehat didirikan pada tahun 2000 dengan tujuan memberikan layanan kesehatan berkualitas kepada masyarakat. Selama lebih dari dua dekade, kami telah melayani ribuan pasien dengan dedikasi dan profesionalisme.</p>
+            <h2>Sejarah Singkat Klinik Hartono Medika</h2>
+            <p>Klinik Hartono Medika didirikan pada tahun 2000 dengan tujuan memberikan layanan kesehatan berkualitas kepada masyarakat. Selama lebih dari dua dekade, kami telah melayani ribuan pasien dengan dedikasi dan profesionalisme.</p>
         </section>
 
         <section id="schedule" class="center">
