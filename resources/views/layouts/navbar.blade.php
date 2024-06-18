@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="Klinik PeduliSehat Logo">
+            <img src="{{ asset('images/medikahartono.png') }}" alt="Klinik Hartono Medika Logo" style="weight:100px;height:100px;">
         </div>
 
         <i class='bc bx-menu' id="menu-icon"></i>
