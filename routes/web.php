@@ -9,6 +9,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/userprofile', function () {
         return view('user');
     })->name('profile');
+
+    // routes/web.php
+
+
+    Route::get('/profile', function () {
+    return view('user');
+    })->middleware('auth');
+
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
 
     Route::post('/send-email', [EmailController::class, 'send'])->name('send.email');
 
