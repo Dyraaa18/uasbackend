@@ -9,11 +9,59 @@
 <body>
     <h1>Admin Dashboard</h1>
 
+
+    <nav>
+        <ul>
+            <li><a href="{{ route('admin.doctors') }}">CRUD Dokter</a></li>
+            <li><a href="{{ route('admin.medicines') }}">CRUD Obat</a></li>
+        </ul>
+    </nav>
+
     <!-- Tombol Logout -->
     <form method="POST" action="{{ route('admin.logout') }}">
         @csrf
         <button type="submit">Logout</button>
     </form>
+
+    <!-- Tampilkan Akun Pengguna -->
+    <h2>Akun Pengguna</h2>
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Dibuat Pada</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($users as $user)
+                <tr>
+                    <td>{{ $user->id }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('admin.updateUser', $user->id) }}">
+                            @csrf
+                            <input type="text" name="name" value="{{ $user->name }}">
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->created_at }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('admin.deleteUser', $user->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
     <!-- Konten dashboard lainnya -->
 </body>

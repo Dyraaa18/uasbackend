@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Tiket</title>
+    <title>Booking</title>
     <link rel="stylesheet" href="{{ asset('css/book.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 </head>
 <body>
 
