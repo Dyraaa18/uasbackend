@@ -1,4 +1,4 @@
-// app/Http/Controllers/ProfileController.php
+<?php
 
 namespace App\Http\Controllers;
 
