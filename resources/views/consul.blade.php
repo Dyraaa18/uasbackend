@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Konsultasi</title>
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/consul.css') }}">
+    
 </head>
 <body>
     @include('layouts.navbar')
@@ -40,9 +40,10 @@
 
         </section>
     </main>
-
+    
     <footer>
         <p>&copy; 2024 Klinik PeduliSehat. All rights reserved.</p>
     </footer>
+    
 </body>
 </html>

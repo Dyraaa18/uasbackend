@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
     <form action="{{ route('admin.login') }}" method="POST">

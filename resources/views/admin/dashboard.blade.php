@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
     <title>Admin Dashboard</title>
+
     <!-- Tambahkan CSS atau framework yang Anda gunakan -->
 </head>
 <body>
@@ -12,8 +14,8 @@
 
     <nav>
         <ul>
-            <li><a href="{{ route('admin.doctors') }}">CRUD Dokter</a></li>
-            <li><a href="{{ route('admin.medicines') }}">CRUD Obat</a></li>
+            <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
+            <li><a href="{{ route('admin.medicines') }}">CRUD OBAT</a></li>
         </ul>
     </nav>
 
