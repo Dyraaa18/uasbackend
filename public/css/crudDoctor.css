@@ -5,81 +5,98 @@
     padding: 0;
 }
 
+/* Define CSS variables for commonly used values */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --error-color: #f44336;
+    --border-color: #ccc;
+    --bg-color: #f7f7f7;
+    --text-color: #333;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --hover-bg-color: #3e8e41;
+}
+
+/* Global Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     padding: 20px;
-    background-color: #f7f7f7;
-    color: #333;
 }
 
-h1, h2, h3 {
+/* Header */
+h1, h2 {
     margin-bottom: 20px;
-    font-weight: bold;
+    text-align: center;
+    color: var(--primary-color);
 }
 
+/* Navigation Styles */
 nav ul {
     list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+    margin: 0 10px;
 }
 
-section {
-    margin-bottom: 40px;
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
+nav ul li a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Form Styles */
 form {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-form label {
-    flex: 1 0 120px; /* Flex-grow, flex-shrink, flex-basis */
-    margin-bottom: 10px;
-    font-weight: bold;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="file"],
 form button {
-    flex: 2 0 auto; /* Flex-grow, flex-shrink, flex-basis */
+    width: calc(100% - 20px);
     margin-bottom: 10px;
-    margin-right: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    box-sizing: border-box;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 form button {
-    flex: 1 0 auto; /* Flex-grow, flex-shrink, flex-basis */
-    margin: 0;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
-    /* Gradient background */
-    background-image: linear-gradient(to right, #4CAF50, #45a049);
-    /* Shadow */
-    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
 }
 
 form button:hover {
-    background-color: #45a049;
-    /* Gradient background on hover */
-    background-image: linear-gradient(to right, #45a049, #4CAF50);
-    /* Intensify shadow on hover */
-    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.15);
+    background-color: var(--hover-bg-color);
 }
 
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -87,31 +104,25 @@ table {
 }
 
 table th, table td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     padding: 12px;
     text-align: left;
 }
 
 table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-table td img {
-    max-width: 100px;
-    height: auto;
-}
-
-button {
-    background-color: #f44336;
+    background-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #da190b;
+table td form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Success Message Styles */
+.success {
+    color: green;
+    margin-bottom: 20px;
+    text-align: center;
 }

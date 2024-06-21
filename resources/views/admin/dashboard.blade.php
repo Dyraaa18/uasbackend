@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/admindashboard.css') }}">
     <title>Admin Dashboard</title>
-
-    <!-- Tambahkan CSS atau framework yang Anda gunakan -->
 </head>
 <body>
     <h1>Admin Dashboard</h1>
-
 
     <nav>
         <ul>
@@ -28,9 +25,9 @@
     <!-- Tampilkan Akun Pengguna -->
     <h2>Akun Pengguna</h2>
     @if(session('success'))
-        <div>{{ session('success') }}</div>
+        <div class="notification">{{ session('success') }}</div>
     @endif
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>

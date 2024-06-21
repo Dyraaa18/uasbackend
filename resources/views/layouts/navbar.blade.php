@@ -20,7 +20,7 @@
         <nav class="navbar">
             <a href="/">Home</a>
             <a href="/antrian">Daftar Antrian</a>
-            <a href="/doctor">Dokter</a>
+            <a href="/doctor">Tenaga Kerja</a>
             <a href="/medicine">Obat</a>
             <a href="/booking">Booking</a>
             <a href="/consultation">Konsultasi</a>

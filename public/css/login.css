@@ -5,84 +5,88 @@
     padding: 0;
 }
 
+/* Define CSS variables for commonly used values */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --error-color: #f44336;
+    --border-color: #ccc;
+    --bg-color: #f7f7f7;
+    --text-color: #333;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    background-color: #f4f4f9;
-    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
+/* Form Styles */
+form {
     background-color: #fff;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    color: #007bff;
-    margin-bottom: 20px;
 }
 
-.form-group {
+form div {
     margin-bottom: 15px;
+    text-align: left;
 }
 
-label {
+form label {
     display: block;
-    font-weight: bold;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select {
+form input[type="email"],
+form input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
     box-sizing: border-box;
-    transition: border-color 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-select:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-button {
-    display: block;
+form button {
     width: 100%;
-    padding: 12px 20px; /* Mengatur ulang padding agar serupa dengan aplikasi */
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
+    padding: 10px;
+    background-color: var(--primary-color);
     color: white;
-    font-size: 16px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #45a049;
+form button:hover {
+    background-color: var(--secondary-color);
 }
 
-/* Navbar styles */
-nav ul {
-    list-style-type: none;
+form .error {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+/* Additional styles */
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
 }
-
