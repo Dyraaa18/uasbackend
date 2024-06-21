@@ -10,83 +10,82 @@
     --primary-color: #4CAF50;
     --secondary-color: #45a049;
     --error-color: #f44336;
-    --border-color: #ccc;
-    --bg-color: #f7f7f7;
-    --text-color: #333;
+    --text-color: #fff;
+    --container-bg-color: rgba(255, 255, 255, 0.9); /* Light background color with transparency */
+    --bg-image: url('path/to/your/background-image.jpg');
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Global Styles */
 body {
+    font-family: var(--font-family);
+    background: var(--bg-image) no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
+    background-color: antiquewhite;
 }
 
-/* Form Styles */
-form {
-    background-color: #fff;
+/* Container for form */
+.container {
+    background-color: var(--container-bg-color);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     text-align: center;
 }
 
-form div {
-    margin-bottom: 15px;
-    text-align: left;
+/* Header */
+h1 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
 }
 
-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form input[type="email"],
 form input[type="password"] {
-    width: 100%;
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
     padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 form button {
-    width: 100%;
-    padding: 10px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-color);
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    padding: 10px 20px;
     font-size: 16px;
-    font-weight: bold;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
 form button:hover {
     background-color: var(--secondary-color);
 }
 
-form .error {
+/* Error message */
+.error {
     color: var(--error-color);
-    font-size: 14px;
-    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
-/* Additional styles */
+/* Footer text */
 p {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 15px;
+    color: var(--text-color);
 }
