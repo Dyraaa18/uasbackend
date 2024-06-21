@@ -42,6 +42,6 @@ class AntrianController extends Controller {
             'nomor_antrian' => $nomor_antrian,
         ]);
 
-        return redirect()->route('antrian.create')->with('success', "Antrian berhasil ditambahkan. Nomor antrian Anda: $nomor_antrian");
+        return redirect()->route('antrian.create');
     }
 }
