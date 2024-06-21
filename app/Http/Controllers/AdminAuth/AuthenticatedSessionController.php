@@ -19,11 +19,12 @@ class AuthenticatedSessionController extends Controller
 
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            $request->session()->regenerate();
+            return redirect()->intended('/admin/dashboard');
+        }
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
+        return redirect()->intended('/admin/dashboard');
     }
 
     public function destroy(Request $request): RedirectResponse
