@@ -32,9 +32,6 @@ Route::middleware(['auth'])->group(function () {
         return view('consul');
     })->name('consul');
 
-    Route::get('/booking', function () {
-        return view('booking');
-    })->name('book');
 
     Route::get('/userprofile', function () {
         return view('user');
@@ -57,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Rute untuk menyimpan booking
+    Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
     Route::get('/medicine', [MedicineController::class, 'publicIndex'])->name('public.medicine');
@@ -99,5 +97,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/medicines', [MedicineController::class, 'store'])->name('admin.storeMedicine');
     Route::put('/admin/medicines/{id}', [MedicineController::class, 'update'])->name('admin.updateMedicine');
     Route::delete('/admin/medicines/{id}', [MedicineController::class, 'destroy'])->name('admin.deleteMedicine');
+
+    Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings');
+    Route::delete('/admin/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
 });
 

@@ -11,11 +11,11 @@
 <body>
     <h1>Admin Dashboard</h1>
 
-
     <nav>
         <ul>
             <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
             <li><a href="{{ route('admin.medicines') }}">CRUD OBAT</a></li>
+            <li><a href="{{ route('admin.bookings') }}">CRUD BOOKING</a></li>
         </ul>
     </nav>
 

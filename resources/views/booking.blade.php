@@ -1,3 +1,5 @@
+<!-- resources/views/booking.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,11 +44,11 @@
             <label for="date">Tanggal:</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="ticket_type">Jenis Tiket:</label>
-            <select id="ticket_type" name="ticket_type">
-                <option value="vip">VIP</option>
-                <option value="regular">Regular</option>
-                <option value="student">Student</option>
+            <label for="tenaga_kerja">Tenaga Kerja:</label>
+            <select id="tenaga_kerja" name="tenaga_kerja">
+                @foreach($doctors as $doctor)
+                <option value="{{ $doctor->name }}">{{ $doctor->name }}</option>
+                @endforeach
             </select>
 
             <button type="submit">Booking</button>
