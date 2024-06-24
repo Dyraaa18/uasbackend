@@ -1,117 +1,47 @@
-/* Reset default browser styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    background-color: #f7f7f7;
-    color: #333;
+    background-color: #f8f9fa;
 }
 
-h1, h2, h3 {
-    margin-bottom: 20px;
-    font-weight: bold;
+.container {
+    margin-top: 50px;
 }
 
-nav ul {
-    list-style-type: none;
+.navbar-nav {
+    flex-direction: row;
 }
 
-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+.nav-item + .nav-item {
+    margin-left: 15px;
 }
 
-section {
-    margin-bottom: 40px;
+.nav-link {
+    color: #007bff;
 }
 
-form {
-    display: flex;
-    flex-wrap: wrap;
+.nav-link:hover {
+    color: #0056b3;
 }
 
-form label {
-    flex: 1 0 120px; /* Flex-grow, flex-shrink, flex-basis */
-    margin-bottom: 10px;
-    font-weight: bold;
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
 }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="file"],
-form button {
-    flex: 2 0 auto; /* Flex-grow, flex-shrink, flex-basis */
-    margin-bottom: 10px;
-    margin-right: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
+.table tbody td {
+    vertical-align: middle;
 }
 
-form button {
-    flex: 1 0 auto; /* Flex-grow, flex-shrink, flex-basis */
-    margin: 0;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    /* Gradient background */
-    background-image: linear-gradient(to right, #4CAF50, #45a049);
-    /* Shadow */
-    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+.form-group img {
+    max-width: 200px;
 }
 
-form button:hover {
-    background-color: #45a049;
-    /* Gradient background on hover */
-    background-image: linear-gradient(to right, #45a049, #4CAF50);
-    /* Intensify shadow on hover */
-    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.15);
+.form-group .btn-primary {
+    margin-top: 10px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-table td img {
-    max-width: 100px;
-    height: auto;
-}
-
-button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #da190b;
+.alert-success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
