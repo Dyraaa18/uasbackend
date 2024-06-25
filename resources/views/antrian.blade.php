@@ -85,10 +85,11 @@
             document.getElementById('modalPoli').innerText = poli;
 
             $('#successModal').modal('show');
-        }
 
-        function submitForm() {
-            document.getElementById('antrianForm').submit();
+            // Submit the form after showing the modal
+            setTimeout(function() {
+                document.getElementById('antrianForm').submit();
+            }, 500); // Adjust the timeout as needed
         }
 
         function resetForm() {
