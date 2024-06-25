@@ -54,7 +54,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('home');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
@@ -65,7 +65,8 @@ class AuthController extends Controller
     // Fungsi untuk logout
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
+
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

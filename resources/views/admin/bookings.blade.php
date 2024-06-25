@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Booking</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -105,7 +107,7 @@
     </nav>
 
     <div class="container">
-        <h1>Daftar Booking</h1>
+        <h1 class="text-center mb-4">Daftar Booking</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -122,11 +124,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ $booking->name }}</h5>
-                    <p class="card-text">Email: {{ $booking->email }}</p>
-                    <p class="card-text">Telepon: {{ $booking->phone }}</p>
-                    <p class="card-text">Tanggal: {{ $booking->date }}</p>
-                    <p class="card-text">Tenaga Kerja: {{ $booking->tenaga_kerja }}</p>
-                    <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST">
+                    <p class="card-text"><strong>Email:</strong> {{ $booking->email }}</p>
+                    <p class="card-text"><strong>Telepon:</strong> {{ $booking->phone }}</p>
+                    <p class="card-text"><strong>Tanggal:</strong> {{ $booking->date }}</p>
+                    <p class="card-text"><strong>Tenaga Kerja:</strong> {{ $booking->tenaga_kerja }}</p>
+                    <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="mt-3">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus booking ini?')">Delete</button>
