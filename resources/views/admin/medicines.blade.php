@@ -13,6 +13,7 @@
         <ul>
             <li><a href="{{ route('admin.dashboard') }}">DASHBOARD</a></li>
             <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
+            <li><a href="{{ route('admin.bookings') }}">CRUD BOOKING</a></li>
         </ul>
     </nav>
 

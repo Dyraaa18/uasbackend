@@ -23,7 +23,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Middleware untuk pengguna yang sudah login
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web'])->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
@@ -32,9 +32,6 @@ Route::middleware(['auth'])->group(function () {
         return view('consul');
     })->name('consul');
 
-    Route::get('/booking', function () {
-        return view('booking');
-    })->name('book');
 
     Route::get('/userprofile', function () {
         return view('user');
@@ -57,6 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Rute untuk menyimpan booking
+    Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
     Route::get('/medicine', [MedicineController::class, 'publicIndex'])->name('public.medicine');
@@ -69,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Rute untuk pengguna yang belum login (guest)
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['guest:web'])->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -81,6 +79,8 @@ Route::middleware(['guest:admin'])->group(function () {
     Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
     Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
 });
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 // Middleware untuk admin yang sudah login
 Route::middleware(['auth:admin'])->group(function () {
@@ -99,5 +99,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/medicines', [MedicineController::class, 'store'])->name('admin.storeMedicine');
     Route::put('/admin/medicines/{id}', [MedicineController::class, 'update'])->name('admin.updateMedicine');
     Route::delete('/admin/medicines/{id}', [MedicineController::class, 'destroy'])->name('admin.deleteMedicine');
+
+    Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings');
+    Route::delete('/admin/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
 });
 

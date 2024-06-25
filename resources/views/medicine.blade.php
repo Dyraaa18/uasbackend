@@ -20,10 +20,25 @@
             </div>
         @endif
 
+        <!-- Search and Sort -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <input type="text" id="search" class="form-control" placeholder="Search by name...">
+            </div>
+            <div class="col-md-6">
+                <select id="sort" class="form-control">
+                    <option value="a-z">Sort by name: A-Z</option>
+                    <option value="z-a">Sort by name: Z-A</option>
+                    <option value="low-high">Sort by price: Low to High</option>
+                    <option value="high-low">Sort by price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
         <!-- Tampilkan Daftar Obat -->
-        <div class="row">
+        <div class="row" id="medicine-list">
             @foreach($medicines as $medicine)
-                <div class="col-md-4">
+                <div class="col-md-4 medicine-item" data-name="{{ $medicine->name }}" data-price="{{ $medicine->price }}">
                     <div class="medicine-card">
                         @if ($medicine->image)
                             <img src="{{ asset('images/' . $medicine->image) }}" alt="{{ $medicine->name }}">
@@ -89,40 +104,117 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-    $('.buy-btn').click(function() {
-        var medicineId = $(this).data('medicine-id');
-        var price = $(this).data('price');
-        $('#medicineId').val(medicineId);
-        $('#buyModal').modal('show');
+    $(document).ready(function() {
+        function attachBuyEvent() {
+            // Handle the buy button click
+            $('.buy-btn').off('click').on('click', function() {
+                var medicineId = $(this).data('medicine-id');
+                var price = $(this).data('price');
+                $('#medicineId').val(medicineId);
+                $('#buyModal').modal('show');
 
-        $('#quantity').on('input', function() {
-            var quantity = $(this).val();
-            var totalPrice = quantity * price;
-            $('#totalPrice').val('Rp ' + totalPrice.toLocaleString());
+                $('#quantity').off('input').on('input', function() {
+                    var quantity = $(this).val();
+                    var totalPrice = quantity * price;
+                    $('#totalPrice').val('Rp ' + totalPrice.toLocaleString());
+                });
+            });
+        }
+
+        function sortMedicines() {
+            var sortValue = localStorage.getItem('sortValue');
+            if (sortValue) {
+                $('#sort').val(sortValue);
+                var $medicines = $('.medicine-item');
+
+                if (sortValue === 'a-z') {
+                    $medicines.sort(function(a, b) {
+                        return $(a).data('name').localeCompare($(b).data('name'));
+                    });
+                } else if (sortValue === 'z-a') {
+                    $medicines.sort(function(a, b) {
+                        return $(b).data('name').localeCompare($(a).data('name'));
+                    });
+                } else if (sortValue === 'low-high') {
+                    $medicines.sort(function(a, b) {
+                        return $(a).data('price') - $(b).data('price');
+                    });
+                } else if (sortValue === 'high-low') {
+                    $medicines.sort(function(a, b) {
+                        return $(b).data('price') - $(a).data('price');
+                    });
+                }
+
+                $('#medicine-list').html($medicines);
+                attachBuyEvent(); // Reattach buy event after sorting
+            }
+        }
+
+        attachBuyEvent();
+        sortMedicines();
+
+        // Handle the buy submit
+        $('#buySubmit').click(function() {
+            var formData = $('#buyForm').serialize();
+            $.ajax({
+                url: '{{ route('buyMedicine') }}',
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                    $('#buyModal').modal('hide');
+                    alert('Pembelian berhasil!');
+                    location.reload(); // Refresh halaman setelah pembelian berhasil
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Terjadi kesalahan saat melakukan pembelian.');
+                }
+            });
+        });
+
+        // Handle search
+        $('#search').on('input', function() {
+            var searchValue = $(this).val().toLowerCase();
+            $('.medicine-item').each(function() {
+                var medicineName = $(this).data('name').toLowerCase();
+                if (medicineName.includes(searchValue)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        // Handle sort
+        $('#sort').change(function() {
+            var sortValue = $(this).val();
+            localStorage.setItem('sortValue', sortValue); // Save sort state
+            var $medicines = $('.medicine-item');
+
+            if (sortValue === 'a-z') {
+                $medicines.sort(function(a, b) {
+                    return $(a).data('name').localeCompare($(b).data('name'));
+                });
+            } else if (sortValue === 'z-a') {
+                $medicines.sort(function(a, b) {
+                    return $(b).data('name').localeCompare($(a).data('name'));
+                });
+            } else if (sortValue === 'low-high') {
+                $medicines.sort(function(a, b) {
+                    return $(a).data('price') - $(b).data('price');
+                });
+            } else if (sortValue === 'high-low') {
+                $medicines.sort(function(a, b) {
+                    return $(b).data('price') - $(a).data('price');
+                });
+            }
+
+            $('#medicine-list').html($medicines);
+            attachBuyEvent(); // Reattach buy event after sorting
         });
     });
+</script>
 
-    $('#buySubmit').click(function() {
-    var formData = $('#buyForm').serialize();
-    $.ajax({
-        url: '{{ route('buyMedicine') }}',
-        method: 'POST',
-        data: formData,
-        success: function(response) {
-            $('#buyModal').modal('hide');
-            alert('Pembelian berhasil!');
-            location.reload(); // Refresh halaman setelah pembelian berhasil
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-            alert('Terjadi kesalahan saat melakukan pembelian.');
-        }
-    });
-});
 
-});
-
-    </script>
 </body>
 </html>
