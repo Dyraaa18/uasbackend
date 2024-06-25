@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Obat</title>
+    <title>CRUD OBAT</title>
     <link rel="stylesheet" href="{{ asset('css/crudMedicine.css') }}">
 </head>
 <body>
-    <h1>CRUD Obat</h1>
+    <h1>CRUD OBAT</h1>
 
     <nav>
         <ul>
-            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ route('admin.doctors') }}">CRUD Dokter</a></li>
+            <li><a href="{{ route('admin.dashboard') }}">DASHBOARD</a></li>
+            <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
+            <li><a href="{{ route('admin.bookings') }}">CRUD BOOKING</a></li>
         </ul>
     </nav>
 
