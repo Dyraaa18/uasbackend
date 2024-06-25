@@ -66,4 +66,3 @@ class BookingController extends Controller
         return redirect()->back()->with('success', 'Booking berhasil dihapus');
     }
 }
-}
