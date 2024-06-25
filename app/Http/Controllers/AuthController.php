@@ -49,18 +49,28 @@ class AuthController extends Controller
     // Fungsi untuk memproses login
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        $user = User::where('email', $request->email)->first();
+        
+        if ($user && Auth::guard('web')->attempt($credentials)) {
+            // Jika login sebagai user berhasil
             $request->session()->regenerate();
 
             return redirect()->intended('/');
         }
 
+        // Jika login gagal, kembalikan dengan pesan error
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        ])->withInput();
     }
+
 
     // Fungsi untuk logout
     public function logout(Request $request)
@@ -71,6 +81,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }
