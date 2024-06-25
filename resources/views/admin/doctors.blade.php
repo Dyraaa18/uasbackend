@@ -95,43 +95,16 @@
         </section>
 
         <section>
-            <h2 class="section-title">Daftar Dokter</h2>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Spesialisasi</th>
-                        <th>Alamat</th>
-                        <th>Jam Kerja</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($doctors as $doctor)
-                        <tr>
-                            <td>{{ $doctor->id }}</td>
-                            <td>{{ $doctor->name }}</td>
-                            <td>{{ $doctor->email }}</td>
-                            <td>{{ $doctor->specialization }}</td>
-                            <td>{{ $doctor->address }}</td>
-                            <td>{{ $doctor->working_hours }}</td>
-                            <td>
-                                <div class="d-flex">
-                                    <a href="{{ route('admin.updateDoctor', $doctor->id) }}" class="btn btn-warning btn-sm mr-2">Edit</a>
-                                    <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </section>
+        <!-- Tampilkan Daftar Dokter -->
+        <h2>Daftar Dokter</h2>
+        <table border="1">
+            <tbody>
+                @foreach($doctors as $doctor)
+                @endforeach
+            </tbody>
+        </table>
+    </section>
+
     </div>
 
     <script>
