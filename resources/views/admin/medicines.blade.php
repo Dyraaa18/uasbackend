@@ -19,7 +19,7 @@
 
     <!-- Tampilkan Pesan Sukses -->
     @if(session('success'))
-        <div>{{ session('success') }}</div>
+        <div class="success">{{ session('success') }}</div>
     @endif
 
     <section>
@@ -30,17 +30,17 @@
             @if (isset($medicine))
                 @method('PUT')
             @endif
-            <input type="text" name="name" placeholder="Nama Obat" value="{{ old('name', isset($medicine) ? $medicine->name : '') }}" required><br><br>
-            <textarea name="description" placeholder="Deskripsi" required>{{ old('description', isset($medicine) ? $medicine->description : '') }}</textarea><br><br>
-            <input type="number" name="stock" placeholder="Stock" value="{{ old('stock', isset($medicine) ? $medicine->stock : '') }}" required><br><br>
-            <input type="text" name="price" placeholder="Harga (ribuan / ratusan)" pattern="[0-9]*" title="Harga harus dalam format angka" value="{{ old('price', isset($medicine) ? number_format($medicine->price, 0, ',', '.') : '') }}" required><br><br>
+            <input type="text" name="name" placeholder="Nama Obat" value="{{ old('name', isset($medicine) ? $medicine->name : '') }}" required>
+            <textarea name="description" placeholder="Deskripsi" required>{{ old('description', isset($medicine) ? $medicine->description : '') }}</textarea>
+            <input type="number" name="stock" placeholder="Stock" value="{{ old('stock', isset($medicine) ? $medicine->stock : '') }}" required>
+            <input type="text" name="price" placeholder="Harga (ribuan / ratusan)" pattern="[0-9]*" title="Harga harus dalam format angka" value="{{ old('price', isset($medicine) ? number_format($medicine->price, 0, ',', '.') : '') }}" required>
             
             @if (isset($medicine) && $medicine->image)
                 <p>Gambar saat ini:</p>
-                <img src="{{ asset('images/' . $medicine->image) }}" alt="Gambar Obat" style="max-width: 200px;"><br><br>
+                <img src="{{ asset('images/' . $medicine->image) }}" alt="Gambar Obat" style="max-width: 200px;">
             @endif
             
-            <input type="file" name="image" accept="image/*"><br><br>
+            <input type="file" name="image" accept="image/*">
             <button type="submit">{{ isset($medicine) ? 'Update' : 'Tambah' }}</button>
         </form>
     </section>
@@ -48,22 +48,23 @@
     <section>
         <!-- Tampilkan Daftar Obat -->
         <h2>Daftar Obat</h2>
-        <table border="1">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Stock</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach($medicines as $medicine)
                     <tr>
-                        <td>
-                            <form method="POST" action="{{ isset($medicine) ? route('admin.updateMedicine', $medicine->id) : route('admin.storeMedicine') }}" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" placeholder="Nama Obat" value="{{ old('name', isset($medicine) ? $medicine->name : '') }}" required><br><br>
-                                <textarea name="description" placeholder="Deskripsi" required>{{ old('description', isset($medicine) ? $medicine->description : '') }}</textarea><br><br>
-                                <input type="number" name="stock" placeholder="Stock" value="{{ old('stock', isset($medicine) ? $medicine->stock : '') }}" required><br><br>
-                                <input type="text" name="price" placeholder="Harga (ribuan / ratusan)" pattern="[0-9]*" title="Harga harus dalam format angka" value="{{ old('price', isset($medicine) ? number_format($medicine->price, 0, ',', '.') : '') }}" required><br><br>
-                                <input type="file" name="image" accept="image/*"><br><br>
-                                <button type="submit">{{ isset($medicine) ? 'Update' : 'Tambah' }}</button>
-                            </form>
-                        </td>
+                        <td>{{ $medicine->name }}</td>
+                        <td>{{ $medicine->description }}</td>
+                        <td>{{ $medicine->stock }}</td>
+                        <td>{{ $medicine->price }}</td>
                         <td>
                             <form method="POST" action="{{ route('admin.deleteMedicine', $medicine->id) }}">
                                 @csrf

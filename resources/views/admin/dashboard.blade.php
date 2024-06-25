@@ -19,7 +19,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Admin Dashboard</h1>
-
+        
         <nav class="navbar navbar-expand-lg navbar-light bg-light my-4">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
@@ -39,7 +39,7 @@
                 </form>
             </div>
         </nav>
-
+        
         <h2 class="my-4">Akun Pengguna</h2>
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -82,7 +82,7 @@
             </table>
         </div>
     </div>
-
+    
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

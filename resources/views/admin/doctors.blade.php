@@ -97,25 +97,25 @@
         <section>
         <!-- Tampilkan Daftar Dokter -->
         <h2>Daftar Dokter</h2>
-        <table border="1">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Spesialisasi</th>
+                    <th>Alamat</th>
+                    <th>Jam Kerja</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
             <tbody>
                 @foreach($doctors as $doctor)
                     <tr>
-                        <td>
-                            <!-- Form Tambah/Edit -->
-                            <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
-                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
-                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
-                                <input type="text" name="address" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required><br><br>
-                                <input type="text" name="working_hours" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required><br><br>                           
-                                <input type="file" name="image" accept="image/*"><br><br>
-                                <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
-                            </form>
-
-                        </td>
+                        <td>{{ $doctor->name }}</td>
+                        <td>{{ $doctor->email }}</td>
+                        <td>{{ $doctor->specialization }}</td>
+                        <td>{{ $doctor->address }}</td>
+                        <td>{{ $doctor->working_hours }}</td>
                         <td>
                             <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
                                 @csrf
