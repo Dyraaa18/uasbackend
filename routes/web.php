@@ -23,7 +23,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Middleware untuk pengguna yang sudah login
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web'])->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Rute untuk pengguna yang belum login (guest)
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['guest:web'])->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -80,9 +80,10 @@ Route::middleware(['guest:admin'])->group(function () {
     Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
 });
 
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
 // Middleware untuk admin yang sudah login
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
     Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');

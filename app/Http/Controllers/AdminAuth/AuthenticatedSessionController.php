@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/admin/dashboard');
         }
 
-        return redirect()->intended('/admin/dashboard');
+        return redirect()->intended('/admin/login');
     }
 
     public function destroy(Request $request): RedirectResponse
