@@ -12,14 +12,16 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="Klinik PeduliSehat Logo">
+            <img src="{{ asset('images/medikahartono.png') }}" alt="Klinik Hartono Medika Logo" style="weight:100px;height:100px;">
         </div>
 
         <i class='bc bx-menu' id="menu-icon"></i>
 
         <nav class="navbar">
             <a href="/">Home</a>
-            <a href="/doctor">Dokter</a>
+            <a href="/antrian">Daftar Antrian</a>
+            <a href="/doctor">Tenaga Kerja</a>
+            <a href="/medicine">Obat</a>
             <a href="/booking">Booking</a>
             <a href="/consultation">Konsultasi</a>
             <a href="/userprofile">Profile</a>

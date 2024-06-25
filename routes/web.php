@@ -7,6 +7,9 @@ use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ use App\Http\Controllers\EmailController;
 */
 
 // Middleware untuk pengguna yang sudah login
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web'])->group(function () {
     Route::get('/', function () {
         return view('home');
     })->name('home');
@@ -29,13 +32,21 @@ Route::middleware(['auth'])->group(function () {
         return view('consul');
     })->name('consul');
 
-    Route::get('/booking', function () {
-        return view('booking');
-    })->name('book');
 
     Route::get('/userprofile', function () {
         return view('user');
     })->name('profile');
+
+    // routes/web.php
+
+
+    Route::get('/profile', function () {
+    return view('user');
+    })->middleware('auth');
+
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
 
     Route::post('/send-email', [EmailController::class, 'send'])->name('send.email');
 
@@ -43,11 +54,20 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Rute untuk menyimpan booking
+    Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+
+    Route::get('/medicine', [MedicineController::class, 'publicIndex'])->name('public.medicine');
+
+    Route::post('/buy-medicine', [MedicineController::class, 'buyMedicine'])->name('buyMedicine');
+
+    Route::get('/antrian', [AntrianController::class, 'create'])->name('antrian.create');
+    Route::post('/antrian/store', [AntrianController::class, 'store'])->name('antrian.store');
+
 });
 
 // Rute untuk pengguna yang belum login (guest)
-Route::middleware(['guest'])->group(function () {
+Route::middleware(['guest:web'])->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -59,6 +79,8 @@ Route::middleware(['guest:admin'])->group(function () {
     Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
     Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
 });
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
 // Middleware untuk admin yang sudah login
 Route::middleware(['auth:admin'])->group(function () {
@@ -72,5 +94,14 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/doctor/store', [DoctorController::class, 'store'])->name('admin.storeDoctor');
     Route::put('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
     Route::delete('/admin/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
+
+    Route::get('/admin/medicines', [MedicineController::class, 'adminIndex'])->name('admin.medicines');
+    Route::post('/admin/medicines', [MedicineController::class, 'store'])->name('admin.storeMedicine');
+    Route::put('/admin/medicines/{id}', [MedicineController::class, 'update'])->name('admin.updateMedicine');
+    Route::delete('/admin/medicines/{id}', [MedicineController::class, 'destroy'])->name('admin.deleteMedicine');
+
+    Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings');
+    Route::delete('/admin/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
 });
 

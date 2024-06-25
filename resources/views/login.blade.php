@@ -5,10 +5,11 @@
     <title>Login</title>
     <!-- Add necessary CSS files for Bootstrap and other styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
 </head>
 <body>
 
-<section class="vh-100" style="background-color: #9A616D;">
+<section class="vh-100" style="background-color: #02333D;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
@@ -55,7 +56,6 @@
                                     <a href="#!" class="small text-muted">Terms of use.</a>
                                     <a href="#!" class="small text-muted">Privacy policy</a>
                                 </form>
-
                             </div>
                         </div>
                     </div>

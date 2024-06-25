@@ -128,9 +128,7 @@
             </tbody>
         </table>
     </section>
-
     </div>
-
     <script>
         $(document).ready(function(){
             $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){

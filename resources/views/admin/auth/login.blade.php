@@ -1,28 +1,30 @@
-<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
-    <form action="{{ route('admin.login') }}" method="POST">
-        @csrf
-        <div>
-            <label>Email</label>
-            <input type="email" name="email" value="{{ old('email') }}">
-            @error('email')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password">
-            @error('password')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
-        <button type="submit">Login</button>
-    </form>
-    <p>Ini Login admin</p>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <form action="{{ route('admin.login') }}" method="POST">
+            @csrf
+            <div>
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                @error('email')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Password">
+                @error('password')
+                    <div class="error">{{ $message }}</div>
+                @enderror
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>
