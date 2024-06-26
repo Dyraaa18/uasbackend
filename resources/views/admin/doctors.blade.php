@@ -9,43 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .navbar-nav {
-            flex-direction: row;
-        }
-        .nav-item + .nav-item {
-            margin-left: 15px;
-        }
-        .nav-link {
-            color: #007bff;
-        }
-        .nav-link:hover {
-            color: #0056b3;
-        }
-        .form-group img {
-            max-width: 200px;
-        }
-        .table thead th {
-            vertical-align: bottom;
-            border-bottom: 2px solid #dee2e6;
-        }
-        .section-title {
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .form-section {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <
 </head>
 <body>
     <div class="container">
