@@ -44,4 +44,16 @@ class AntrianController extends Controller {
 
         return redirect()->route('antrian.create');
     }
+    public function index() {
+        $antrians = Antrian::with('poli')->get();
+        return view('admin.antrians', compact('antrians'));
+    }
+
+    // Menghapus antrian berdasarkan ID
+    public function destroy($id) {
+        $antrian = Antrian::findOrFail($id);
+        $antrian->delete();
+
+        return redirect()->route('admin.antrians')->with('success', 'Antrian berhasil dihapus');
+    }
 }

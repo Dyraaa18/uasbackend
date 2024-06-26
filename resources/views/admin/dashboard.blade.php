@@ -32,6 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.bookings') }}">CRUD BOOKING</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.antrians') }}">CRUD ANTRIAN</a>
+                    </li>
                 </ul>
                 <form class="form-inline" method="POST" action="{{ route('admin.logout') }}">
                     @csrf
