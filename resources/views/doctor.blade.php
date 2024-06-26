@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tenaga Kerja</title>
-    <!-- Tambahkan link CSS Bootstrap -->
+    <title>Tenaga Medis</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tambahkan link CSS kustom -->
     <link rel="stylesheet" href="{{ asset('css/doctor.css') }}">
 </head>
 <body>
@@ -21,11 +19,10 @@
                     <option value="">Semua Spesialisasi</option>
                     <option value="Kulit">Kulit</option>
                     <option value="Jantung">Jantung</option>
-                    <!-- Tambahkan pilihan lain sesuai spesialisasi yang ada -->
                 </select>
             </div>
         </div>
-        <!-- Daftar Dokter -->
+
         <div class="row" id="doctor-list">
             @foreach($doctors as $doctor)
                 <div class="col-md-4 doctor-item" data-specialization="{{ $doctor->specialization }}">

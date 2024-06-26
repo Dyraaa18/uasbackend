@@ -15,7 +15,7 @@
     <div class="profile-container">
         <h1>Profil Pengguna</h1>
         
-        <!-- Bagian Profil -->
+        
         <section class="profile-section">
             <h2>Profil</h2>
             <p><strong>Nama Pengguna:</strong> {{ Auth::user()->name }}</p>
@@ -24,26 +24,26 @@
             <p><strong>Tanggal Lahir:</strong> {{ Auth::user()->qualification1 }}</p>
         </section>
 
-        <!-- Bagian Biografi -->
+        
         <section class="biography-section">
             <h2>Berat Badan</h2>
             <p>{{ Auth::user()->department }}</p>
         </section>
 
-        <!-- Bagian Kualifikasi -->
+        
         <section class="qualifications-section">
             <h2>Tinggi Badan</h2>
             <p>{{ Auth::user()->biography }}</p>
         </section>
 
-        <!-- Bagian Kontak -->
+        
         <section class="contact-section">
             <h2>Kontak</h2>
             <p><strong>Telepon:</strong> {{ Auth::user()->phone }}</p>
             <p><strong>Alamat:</strong> {{ Auth::user()->address }}</p>
         </section>
 
-        <!-- Form Edit Profil -->
+        
         <section class="edit-profile-section">
             <h2>Edit Profil</h2>
             <form action="{{ route('profile.update') }}" method="POST">
@@ -80,16 +80,12 @@
     <div class="user-container">
         <p><strong>Username:</strong> {{ Auth::user()->name }}</p>
         <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
-        <!-- Tambahkan bidang lain dari profil pengguna di sini -->
-
-        <!-- Form untuk logout -->
         <section class="logout-section">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit">Logout</button>
             </form>
         </section>
-
     </div>
 </body>
 </html>
