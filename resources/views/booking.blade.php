@@ -13,13 +13,13 @@
 
     <main>
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert-message" id="alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
         @if (session('error'))
-            <div class="alert alert-danger">
+            <div class="alert-message" id="alert-error">
                 {{ session('error') }}
             </div>
         @endif
@@ -48,5 +48,6 @@
             <button type="submit">Booking</button>
         </form>
     </main>
+    <script src="{{ asset('js/booking.js') }}"></script>
 </body>
 </html>

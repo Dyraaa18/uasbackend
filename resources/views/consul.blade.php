@@ -13,7 +13,7 @@
     <main>
         <section id="consultation" class="center">
             @if (session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success" id="alert-success">
                     {{ session('success') }}
                 </div>
             @endif
@@ -32,5 +32,6 @@
             </form>
         </section>
     </main>
+    <script src="{{ asset('js/consul.js') }}"></script>
 </body>
 </html>
