@@ -103,6 +103,7 @@
             <li><a href="{{ route('admin.dashboard') }}">DASHBOARD</a></li>
             <li><a href="{{ route('admin.medicines') }}">CRUD OBAT</a></li>
             <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
+            <li><a href="{{ route('admin.antrians') }}">CRUD ANTRIAN</a></li>
         </ul>
     </nav>
 

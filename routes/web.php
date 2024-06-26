@@ -103,5 +103,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings');
     Route::delete('/admin/bookings/{id}', [BookingController::class, 'destroy'])->name('bookings.destroy');
 
+    Route::get('/admin/antrians', [AntrianController::class, 'index'])->name('admin.antrians');
+    Route::delete('/admin/antrians/{id}', [AntrianController::class, 'destroy'])->name('antrians.destroy');
+
 });
 
