@@ -1,0 +1,192 @@
+/* Reset default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Define CSS variables for commonly used values */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --hover-shadow: rgba(0, 123, 255, 0.15);
+    --border-color: #ccc;
+    --bg-color: #f4f4f4; /* Background color adjusted for bookings */
+    --text-color: #333;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --nav-bg-color: #333; /* Navbar background color adjusted for bookings */
+    --nav-hover-color: #45a049; /* Navbar hover color adjusted for bookings */
+}
+
+/* Global Styles */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0; /* Adjusted for bookings */
+}
+
+/* Headings */
+h1, h2, h3 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--nav-bg-color);
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--nav-hover-color);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="file"],
+form button {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+    padding: 10px 20px;
+}
+
+form button:hover {
+    background-color: var(--secondary-color);
+    background-image: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 6px 8px var(--hover-shadow);
+}
+
+/* Table Styles */
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.table td img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Custom Container Style */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Notification styles */
+.notification {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+/* Card Styles (if applicable) */
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 5px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}

@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Tiket</title>
+    <title>Booking</title>
     <link rel="stylesheet" href="{{ asset('css/book.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 </head>
 <body>
 
     @include('layouts.navbar')
-
-    <header>
-        <h1>Booking Tiket</h1>
-    </header>
 
     <main>
         @if (session('success'))
@@ -41,19 +38,15 @@
             <label for="date">Tanggal:</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="ticket_type">Jenis Tiket:</label>
-            <select id="ticket_type" name="ticket_type">
-                <option value="vip">VIP</option>
-                <option value="regular">Regular</option>
-                <option value="student">Student</option>
+            <label for="tenaga_kerja">Tenaga Medis:</label>
+            <select id="tenaga_kerja" name="tenaga_kerja">
+                @foreach($doctors as $doctor)
+                <option value="{{ $doctor->name }}">{{ $doctor->name }}</option>
+                @endforeach
             </select>
 
             <button type="submit">Booking</button>
         </form>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Klinik PeduliSehat. All rights reserved.</p>
-    </footer>
 </body>
 </html>
