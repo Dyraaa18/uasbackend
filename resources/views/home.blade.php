@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik Hartono Medika</title>
+    <title>Klinik Hartono Medica</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
@@ -29,7 +29,7 @@
 
     @include('layouts.slider')
     <header>
-        <h1>Welcome to Klinik Hartono Medika</h1>
+        <h1>Welcome to Klinik Hartono Medica</h1>
     </header>
 
     <header>
@@ -37,10 +37,6 @@
     </header>
 
     <main>
-        <section id="history">
-            <h2>Sejarah Singkat Klinik Hartono Medika</h2>
-            <p>Klinik Hartono Medika didirikan pada tahun 2000 dengan tujuan memberikan layanan kesehatan berkualitas kepada masyarakat. Selama lebih dari dua dekade, kami telah melayani ribuan pasien dengan dedikasi dan profesionalisme.</p>
-        </section>
 
         <section id="schedule" class="center">
             <h2>Jadwal Buka / Tutup Klinik</h2>
@@ -56,16 +52,14 @@
             <ul>
                 <li>Ruang Tunggu Nyaman</li>
                 <li>Laboratorium Medis</li>
-                <li>Unit Gawat Darurat (UGD)</li>
                 <li>Apotek</li>
                 <li>Ruang Rawat Inap</li>
-                <li>Ruang Radiologi</li>
             </ul>
         </section>
         <section id="location" class="center">
             <h2>Lokasi Klinik</h2>
-            <p>Jl. Kesehatan No. 10, Jakarta, Indonesia</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.8902432995775!2d106.82279576094478!3d-6.20211754336568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6991d3a3c3e477%3A0x263d3b5c6e7c5e30!2sJl.%20Kesehatan%2C%20Kebayoran%20Baru%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012150!5e0!3m2!1sen!2sid!4v1623309151519!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <p>Distrik Iniyandit, Kabupaten Boven Digoel, Papua, Indonesia</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.8761123204317!2d140.64090387761664!3d-5.7487668454730265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6847b59bbf170875%3A0x39e6c6e4679d66af!2sPuskesmas%20Iniyandit!5e0!3m2!1sen!2sid!4v1719413060142!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
         @include('layouts.gridhome')
     </main>

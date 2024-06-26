@@ -1,5 +1,3 @@
-<!-- resources/views/booking.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +10,6 @@
 <body>
 
     @include('layouts.navbar')
-
-    <header>
-        <h1>Booking Tiket</h1>
-    </header>
 
     <main>
         @if (session('success'))
@@ -44,7 +38,7 @@
             <label for="date">Tanggal:</label>
             <input type="date" id="date" name="date" required>
 
-            <label for="tenaga_kerja">Tenaga Kerja:</label>
+            <label for="tenaga_kerja">Tenaga Medis:</label>
             <select id="tenaga_kerja" name="tenaga_kerja">
                 @foreach($doctors as $doctor)
                 <option value="{{ $doctor->name }}">{{ $doctor->name }}</option>
@@ -54,9 +48,5 @@
             <button type="submit">Booking</button>
         </form>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Klinik PeduliSehat. All rights reserved.</p>
-    </footer>
 </body>
 </html>

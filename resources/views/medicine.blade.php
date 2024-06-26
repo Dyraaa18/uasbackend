@@ -6,21 +6,18 @@
     <title>Daftar Obat</title>
     <link rel="stylesheet" href="{{ asset('css/medicine.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Your custom styles */
-    </style>
 </head>
 <body>
     @include('layouts.navbar')
     <div class="container mt-5">
-        <!-- Tampilkan Pesan Sukses -->
+   
         @if(session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
         @endif
 
-        <!-- Search and Sort -->
+        
         <div class="row mb-3">
             <div class="col-md-6">
                 <input type="text" id="search" class="form-control" placeholder="Search by name...">
@@ -35,7 +32,7 @@
             </div>
         </div>
 
-        <!-- Tampilkan Daftar Obat -->
+       
         <div class="row" id="medicine-list">
             @foreach($medicines as $medicine)
                 <div class="col-md-4 medicine-item" data-name="{{ $medicine->name }}" data-price="{{ $medicine->price }}">
@@ -56,7 +53,7 @@
         </div>
     </div>
 
-    <!-- Modal Pembelian -->
+    
     <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -68,7 +65,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="buyForm">
-                        @csrf <!-- CSRF Token -->
+                        @csrf 
                         <div class="form-group">
                             <label for="buyerName">Nama</label>
                             <input type="text" class="form-control" id="buyerName" name="buyerName" required>

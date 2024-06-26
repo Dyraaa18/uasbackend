@@ -4,23 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bootstrap Carousel Example</title>
-  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{ asset('css/slider2.css') }}">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .carousel {
-      max-width: 60%;
-      margin: auto;
-    }
-    .carousel-item img {
-      width: 100%;
-      height: 500px; /* Adjust height as needed */
-      object-fit: cover;
-    }
-    .carousel-caption {
-      background: rgba(0, 0, 0, 0.5); /* Add background to captions for better readability */
-      padding: 10px;
-    }
-  </style>
 </head>
 <body>
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
