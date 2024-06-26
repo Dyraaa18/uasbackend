@@ -52,17 +52,18 @@
             <table class="table table-bordered w-75">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Dibuat Pada</th>
+                        <th>Umur</th>
+                        <th>Berat Badan</th>
+                        <th>Tinggi Badan</th>
+                        <th>Tanggal lahir</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <td>{{ $user->id }}</td>
                             <td>
                                 <form method="POST" action="{{ route('admin.updateUser', $user->id) }}" class="form-inline">
                                     @csrf
@@ -71,7 +72,10 @@
                                 </form>
                             </td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->created_at }}</td>
+                            <td>{{ $user->position }}</td>
+                            <td>{{ $user->department }}</td>
+                            <td>{{ $user->biography }}</td>
+                            <td>{{ $user->qualification1 }}</td>
                             <td>
                                 <form method="POST" action="{{ route('admin.deleteUser', $user->id) }}">
                                     @csrf
