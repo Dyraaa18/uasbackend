@@ -12,7 +12,7 @@
     <h1 class="text-center">Daftar Antrian</h1>
         <nav class="navbar navbar-expand-lg navbar-light bg-light my-4">
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">DASHBOARD</a>
                     </li>
@@ -24,6 +24,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.bookings') }}">BOOKING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.antrians') }}">ANTRIAN</a>
                     </li>
                 </ul>
             </div>
