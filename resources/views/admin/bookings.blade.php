@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Booking</title>
+    <title>Booking</title>
     <link rel="stylesheet" href="{{ asset('css/bookings.css') }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
@@ -37,16 +37,17 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Daftar Booking</h1>
         @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+    <div class="alert alert-success" style="display: block;">
+        {{ session('success') }}
+    </div>
+@endif
 
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+@if (session('error'))
+    <div class="alert alert-danger" style="display: block;">
+        {{ session('error') }}
+    </div>
+@endif
+
 
         @foreach ($bookings as $booking)
             <div class="card">
@@ -65,6 +66,7 @@
             </div>
         @endforeach
     </div>
+    <script src="{{ asset('js/adminbook.js') }}"></script>
 </div>
 </body>
 </html>
