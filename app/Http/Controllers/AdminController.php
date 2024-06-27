@@ -17,7 +17,7 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
-        $user->save(); // Memanggil save() pada objek $user
+        $user->save();
 
         return redirect()->route('admin.dashboard')->with('success', 'User updated successfully');
     }

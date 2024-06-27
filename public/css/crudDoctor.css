@@ -7,8 +7,8 @@
 
 /* Define CSS variables for commonly used values */
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #45a049;
+    --primary-color: #000000;
+    --secondary-color: #000000;
     --hover-shadow: rgba(0, 123, 255, 0.15);
     --border-color: #ccc;
     --bg-color: #f7f7f7;
@@ -281,8 +281,13 @@ table td form .btn-danger:hover {
 
 /* Alert styles */
 .alert-success {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: none; /* Mulai dengan display none agar tidak terlihat saat halaman dimuat */
 }
+

@@ -7,8 +7,8 @@
 
 /* Define CSS variables for commonly used values */
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #45a049;
+    --primary-color: #000000;
+    --secondary-color: #000000;
     --hover-shadow: rgba(0, 123, 255, 0.15);
     --border-color: #ccc;
     --bg-color: #f7f7f7;
@@ -16,15 +16,21 @@
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --nav-bg-color: #ffffff;
     --nav-hover-color: #eeeeee;
+    --error-color: #f44336;
+    --hover-bg-color: #3e8e41;
 }
 
 /* Global Styles */
 body {
     font-family: var(--font-family);
-    line-height: 1.6;
-    padding: 20px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 /* Headings */
@@ -32,6 +38,7 @@ h1, h2, h3 {
     margin-bottom: 20px;
     font-weight: bold;
     text-align: center;
+    color: var(--primary-color);
 }
 
 /* Navigation */
@@ -69,25 +76,32 @@ nav ul li a:hover {
 /* Form Styles */
 form {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
-    align-items: center;
-    width: 80%;
-    margin: auto;
+    justify-content: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: var(--font-family); /* Ensure font matches navbar */
 }
 
 form input[type="text"],
+form input[type="number"],
+form textarea[name="description"],
 form input[type="email"],
 form input[type="file"],
-form button,
-form textarea,
-form input[type="number"] {
-    padding: 10px;
+form button {
+    padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 14px;
-    width: 100%;
-    box-sizing: border-box;
+    width: calc(100% - 16px);
+    margin-bottom: 10px;
 }
 
 form button {
@@ -98,8 +112,9 @@ form button {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
-    padding: 10px 20px;
-    width: auto;
+    padding: 8px 12px; /* Smaller padding for minimalistic style */
+    font-size: 14px; /* Smaller font size */
+    font-weight: bold;
 }
 
 form button:hover {
@@ -110,8 +125,7 @@ form button:hover {
 
 /* Table Styles */
 table {
-    width: 80%;
-    margin: auto;
+    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     background-color: white;
@@ -121,7 +135,7 @@ table {
 }
 
 table th, table td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     padding: 12px;
     text-align: left;
 }
@@ -145,6 +159,7 @@ table td img {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin-bottom: 10px;
+    margin-top: 50px;
 }
 
 /* Notification styles */
@@ -157,8 +172,125 @@ table td img {
     border: 1px solid #d6e9c6;
 }
 
-@media (max-width: 768px) {
-    form, table {
-        width: 100%;
-    }
+/* Additional Styles from CRUD Dokter */
+.navbar-nav {
+    flex-direction: row;
 }
+
+.nav-item + .nav-item {
+    margin-left: 15px;
+}
+
+.nav-link {
+    color: #007bff;
+}
+
+.nav-link:hover {
+    color: #0056b3;
+}
+
+.form-group img {
+    max-width: 200px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.form-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles for Update, Delete, Add */
+.btn {
+    padding: 8px 12px; /* Consistent smaller padding for all buttons */
+    font-size: 14px; /* Consistent smaller font size for all buttons */
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    background-image: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 6px 8px var(--hover-shadow);
+}
+
+.btn-danger {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: darkred;
+}
+
+/* Style buttons inside table cells */
+table td form button {
+    padding: 8px 12px; /* Ensure the same smaller padding as other buttons */
+    font-size: 14px; /* Ensure the same smaller font size as other buttons */
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+table td form .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.1);
+}
+
+table td form .btn-primary:hover {
+    background-color: var(--secondary-color);
+    background-image: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    box-shadow: 0 6px 8px var(--hover-shadow);
+}
+
+table td form .btn-danger {
+    background-color: var(--error-color);
+    color: white;
+}
+
+table td form .btn-danger:hover {
+    background-color: darkred;
+}
+
+/* Success Message Styles */
+.success {
+    color: green;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Alert styles */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+    display: none; /* Mulai dengan display none agar tidak terlihat saat halaman dimuat */
+}
+
+
