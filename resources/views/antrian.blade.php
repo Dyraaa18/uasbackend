@@ -2,14 +2,13 @@
 <html>
 <head>
     <title>Daftar Antrian</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/antrian.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     @include('layouts.navbar')
 
-    <div class="container mt-5">
-        <h1>Daftar Antrian</h1>
+    <div class="container-l">
 
         @if (session('success'))
             <script>
@@ -41,7 +40,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="button">Submit</button>
         </form>
     </div>
 
@@ -49,51 +48,25 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Hartono Medica</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="successModalLabel">Tiket Detail</h5>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Nama:</strong> <span id="modalNama"></span></p>
-                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
-                    <p><strong>Telepon:</strong> <span id="modalTelepon"></span></p>
-                    <p><strong>Poli:</strong> <span id="modalPoli"></span></p>
+                    <p><strong>Nama:</strong> <span id="modalNama"> {{ session('nama') }}</span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail">{{ session('email') }}</span></p>
+                    <p><strong>Telepon:</strong> <span id="modalTelepon">{{ session('telepon') }}</</span></p>
+                    <p><strong>Poli:</strong> {{ session('poli_name') }}</p>
+                    <p><strong>Nomor Antrian:</strong> <span id="modalNomorAntrian">{{ session('nomor_antrian') }}</span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetForm()">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="{{ asset('js/antrian.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        function showModal(event) {
-            event.preventDefault();
-            var nama = document.getElementById('nama').value;
-            var email = document.getElementById('email').value;
-            var telepon = document.getElementById('telepon').value;
-            var poli = document.getElementById('poli_id').options[document.getElementById('poli_id').selectedIndex].text;
-
-            document.getElementById('modalNama').innerText = nama;
-            document.getElementById('modalEmail').innerText = email;
-            document.getElementById('modalTelepon').innerText = telepon;
-            document.getElementById('modalPoli').innerText = poli;
-
-            $('#successModal').modal('show');
-
-            // Submit the form after showing the modal
-            setTimeout(function() {
-                document.getElementById('antrianForm').submit();
-            }, 500); // Adjust the timeout as needed
-        }
-
-        function resetForm() {
-            document.getElementById('antrianForm').reset();
-        }
-    </script>
 </body>
 </html>

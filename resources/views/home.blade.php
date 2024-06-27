@@ -29,7 +29,7 @@
 
     @include('layouts.slider')
     <header>
-        <h1>Welcome to Klinik Hartono Medica</h1>
+        <h1>Welcome to Klinik Hartono Medika</h1>
     </header>
 
     <header>

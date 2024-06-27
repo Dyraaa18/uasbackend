@@ -227,8 +227,8 @@ Pelari yang mengalami kram otot akan merasakan nyeri dan menyebabkan sulit untuk
             <div class="ps-md-5 mt-4 mt-md-0">
               <div class="post-meta mt-4">Company History</div>
               <h2 class="mb-4 display-4">Hartono Medika</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>Klinik Hartono Medika ini dibuat untuk menjangkau masyarakat yang khusus membutuhkan di bagian Papua Selatan Distrik Iniyandit</p>
+              <p>kami harap website sederhana ini bisa memberikan sistem yang baik dan pelayanan yang terbaik bagi teman teman kami disana</p>
             </div>
           </div>
 
@@ -240,8 +240,10 @@ Pelari yang mengalami kram otot akan merasakan nyeri dan menyebabkan sulit untuk
               <div class="post-meta mt-4">Mission &amp; Vision</div>
               <h2 class="mb-4 display-4">Mission &amp; Vision</h2>
 
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
-              <p>Fugit eaque illum blanditiis, quo exercitationem maiores autem laudantium unde excepturi dolores quasi eos vero harum ipsa quam laborum illo aut facere voluptates aliquam adipisci sapiente beatae ullam. Tempora culpa iusto illum accusantium cum hic quisquam dolor placeat officiis eligendi.</p>
+              <p>Meningkatkan akses informasi kesehatan yang berkualitas dan relevan bagi masyarakat di Papua Selatan.
+              Meningkatkan kesadaran masyarakat tentang pentingnya menjaga kesehatan dan mencegah penyakit.</p>
+              <p>Menjadi website kesehatan terdepan di Papua Selatan yang menyediakan informasi kesehatan yang terpercaya dan mudah diakses oleh masyarakat.
+              Menjadi sumber informasi kesehatan yang utama bagi masyarakat di Papua Selatan untuk meningkatkan pengetahuan dan kesadaran mereka tentang kesehatan.</p>
             </div>
           </div>
 
@@ -255,8 +257,7 @@ Pelari yang mengalami kram otot akan merasakan nyeri dan menyebabkan sulit untuk
         <div class="row justify-content-between align-items-lg-center">
           <div class="col-lg-5 mb-4 mb-lg-0">
             <h2 class="display-4 mb-4">Latest News</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, rem eaque vel est asperiores iste pariatur placeat molestias, rerum provident ea maiores debitis eum earum esse quas architecto! Minima, voluptatum! Minus tempora distinctio quo sint est blanditiis voluptate eos. Commodi dolore nesciunt culpa adipisci nemo expedita suscipit autem dolorum rerum?</p>
-            <p>At magni dolore ullam odio sapiente ipsam, numquam eius minus animi inventore alias quam fugit corrupti error iste laboriosam dolorum culpa doloremque eligendi repellat iusto vel impedit odit cum. Sequi atque molestias nesciunt rem eum pariatur quibusdam deleniti saepe eius maiores porro quam, praesentium ipsa deserunt laboriosam adipisci. Optio, animi!</p>
+            <p>Website kesehatan Hartono Medika di Papua Selatan memiliki misi dan visi yang jelas dan terukur. Dengan strategi yang tepat, website ini diharapkan dapat memberikan dampak positif bagi kesehatan masyarakat di Papua Selatan.</p>
             <p><a href="#" class="more">View All Blog Posts</a></p>
           </div>
           <div class="col-lg-6">
@@ -280,27 +281,26 @@ Pelari yang mengalami kram otot akan merasakan nyeri dan menyebabkan sulit untuk
             <div class="row justify-content-center">
               <div class="col-lg-6">
                 <h2 class="display-4">Our Team</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sint sed, fugit distinctio ad eius itaque deserunt doloribus harum excepturi laudantium sit officiis et eaque blanditiis. Dolore natus excepturi recusandae.</p>
+                <p>Amos Nababan – 535220191</p>
+                <p>Adang Irawan – 535220192</p>
+                <p>Daniel Hartono – 535220206</p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="assets/img/person-1.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Cameron Williamson</h4>
-            <span class="d-block mb-3 text-uppercase">Founder &amp; CEO</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+          <img src="{{ asset('images/amos1.png') }}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Amos Nababan</h4>
+            <span class="d-block mb-3 text-uppercase">FULLSTACK</span>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="assets/img/person-2.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Wade Warren</h4>
-            <span class="d-block mb-3 text-uppercase">Founder, VP</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+          <img src="{{ asset('images/adang1.jpg') }}" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Adang Irawan</h4>
+            <span class="d-block mb-3 text-uppercase">FULLSTACK</span>
           </div>
           <div class="col-lg-4 text-center mb-5">
-            <img src="assets/img/person-3.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-            <h4>Jane Cooper</h4>
-            <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis sunt ullam temporibus aut!</p>
+          <img src="{{ asset('images/daniel1.jpg') }}" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4>Daniel Hartono</h4>
+            <span class="d-block mb-3 text-uppercase">FULLSTACK</span>
           </div>
         </div>
       </div>

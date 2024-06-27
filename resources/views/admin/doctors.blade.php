@@ -57,6 +57,7 @@
             </form>
         </section>
 
+<<<<<<< HEAD
         <section class="text-center">
             <h2>Daftar Dokter</h2>
             <table class="table">
@@ -68,6 +69,34 @@
                         <th scope="col">Alamat</th>
                         <th scope="col">Jam Kerja</th>
                         <th scope="col">Aksi</th>
+=======
+        <section>
+        <h2>Daftar Dokter</h2>
+        <table border="1">
+            <tbody>
+                @foreach($doctors as $doctor)
+                    <tr>
+                        <td>
+                            <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
+                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
+                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
+                                <input type="text" name="address" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required><br><br>
+                                <input type="text" name="working_hours" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required><br><br>                           
+                                <input type="file" name="image" accept="image/*"><br><br>
+                                <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Hapus</button>
+                            </form>
+                        </td>
+>>>>>>> 3886220006c89ff5f7e92be914fc0d160be3e239
                     </tr>
                 </thead>
                 <tbody>

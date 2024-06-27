@@ -10,20 +10,31 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // Fungsi untuk menampilkan form register
+    
     public function showRegistrationForm()
     {
         return view('register');
     }
 
-    // Fungsi untuk memproses registrasi
+    
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'terms' => 'accepted', 
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'email.unique' => 'Email sudah terdaftar. Gunakan email lain.',
+            'password.min' => 'Password anda kurang panjang.',
+            'password.confirmed' => 'password tidak cocok.',
+            'terms.accepted' => 'Anda harus menyetujui syarat dan ketentuan untuk melanjutkan.',
         ]);
+
+        if (!$request->filled('terms')) {
+            $validator->errors()->add('terms', 'Anda harus menyetujui syarat dan ketentuan untuk melanjutkan.');
+        }
+
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -58,19 +69,21 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
         
-        if ($user && Auth::guard('web')->attempt($credentials)) {
-            // Jika login sebagai user berhasil
-            $request->session()->regenerate();
-
-            return redirect()->intended('/');
+        if ($user) {
+            if (Auth::guard('web')->attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/');
+            } else {
+                return back()->withErrors([
+                    'password' => 'Password salah',
+                ])->withInput();
+            }
+        } else {
+            return back()->withErrors([
+                'email' => 'Email tidak terdaftar',
+            ])->withInput();
         }
-
-        // Jika login gagal, kembalikan dengan pesan error
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->withInput();
     }
-
 
     // Fungsi untuk logout
     public function logout(Request $request)
