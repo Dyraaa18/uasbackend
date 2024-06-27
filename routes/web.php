@@ -91,9 +91,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Rute untuk CRUD dokter
     Route::get('/admin/doctors', [DoctorController::class, 'adminIndex'])->name('admin.doctors');
-    Route::post('/admin/doctor/store', [DoctorController::class, 'store'])->name('admin.storeDoctor');
-    Route::put('/admin/doctor/update/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
-    Route::delete('/admin/doctor/delete/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
+    Route::post('/admin/doctors/', [DoctorController::class, 'store'])->name('admin.storeDoctor');
+    Route::put('/admin/doctors/{id}', [DoctorController::class, 'update'])->name('admin.updateDoctor');
+    Route::delete('/admin/doctors/{id}', [DoctorController::class, 'destroy'])->name('admin.deleteDoctor');
 
     Route::get('/admin/medicines', [MedicineController::class, 'adminIndex'])->name('admin.medicines');
     Route::post('/admin/medicines', [MedicineController::class, 'store'])->name('admin.storeMedicine');

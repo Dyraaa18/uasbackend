@@ -17,8 +17,11 @@
             <div class="col-md-6 mb-3">
                 <select id="filter" class="form-control">
                     <option value="">Semua Spesialisasi</option>
-                    <option value="Kulit">Kulit</option>
-                    <option value="Jantung">Jantung</option>
+                    <option value="Dokter Umum">Dokter Umum</option>
+                    <option value="Atlm">Atlm</option>
+                    <option value="Kesehatan Masyarakat">Kesehatan Masyarakat</option>
+                    <option value="Kesehatan Lingkungan">Kesehatan Lingkungan</option>
+                    <option value="Farmasi">Farmasi</option>
                 </select>
             </div>
         </div>

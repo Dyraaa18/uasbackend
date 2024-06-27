@@ -9,16 +9,29 @@
     
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="{{ route('admin.dashboard') }}">DASHBOARD</a></li>
-            <li><a href="{{ route('admin.medicines') }}">CRUD OBAT</a></li>
-            <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
-            <li><a href="{{ route('admin.antrians') }}">CRUD ANTRIAN</a></li>
-        </ul>
-    </nav>
+    <div class="container mt-5">
+        <h1 class="text-center">Booking</h1>
 
-    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light my-4">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.medicines') }}">OBAT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.doctors') }}">DOKTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.antrians') }}">ANTRIAN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="container mt-5">
         <h1 class="text-center mb-4">Daftar Booking</h1>
         @if (session('success'))
             <div class="alert alert-success">
@@ -34,7 +47,7 @@
 
         @foreach ($bookings as $booking)
             <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">{{ $booking->name }}</h5>
                     <p class="card-text"><strong>Email:</strong> {{ $booking->email }}</p>
                     <p class="card-text"><strong>Telepon:</strong> {{ $booking->phone }}</p>
@@ -49,5 +62,6 @@
             </div>
         @endforeach
     </div>
+</div>
 </body>
 </html>

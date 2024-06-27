@@ -14,16 +14,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.doctors') }}">CRUD DOKTER</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.medicines') }}">CRUD OBAT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.bookings') }}">CRUD BOOKING</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.doctors') }}">DOKTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.medicines') }}">OBAT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.bookings') }}">BOOKING</a>
                     </li>
                 </ul>
             </div>

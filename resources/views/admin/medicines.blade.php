@@ -4,24 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD OBAT</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/crudMedicine.css') }}">
+
 </head>
 <body>
-    <h1>CRUD OBAT</h1>
+<div class="container mt-5">
+        <h1 class="text-center">Obat</h1>
 
-    <nav>
-        <ul>
-            <li><a href="{{ route('admin.dashboard') }}">DASHBOARD</a></li>
-            <li><a href="{{ route('admin.doctors') }}">CRUD DOKTER</a></li>
-            <li><a href="{{ route('admin.bookings') }}">CRUD BOOKING</a></li>
-        </ul>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light my-4">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">DASHBOARD</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.doctors') }}">DOKTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.bookings') }}">BOOKING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.antrians') }}">ANTRIAN</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    @if(session('success'))
-        <div>{{ session('success') }}</div>
-    @endif
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
-    <section>
+    <section class="mb-4 form-section">
         <h2>{{ isset($medicine) ? 'Edit Obat' : 'Tambah Obat' }}</h2>
         <form method="POST" action="{{ isset($medicine) ? route('admin.updateMedicine', $medicine->id) : route('admin.storeMedicine') }}" enctype="multipart/form-data">
             @csrf
@@ -43,7 +57,7 @@
         </form>
     </section>
 
-    <section>
+    <section class="mb-4 form-section">
         <h2>Daftar Obat</h2>
         <table border="1">
             <tbody>
@@ -60,8 +74,6 @@
                                 <input type="file" name="image" accept="image/*"><br><br>
                                 <button type="submit">{{ isset($medicine) ? 'Update' : 'Tambah' }}</button>
                             </form>
-                        </td>
-                        <td>
                             <form method="POST" action="{{ route('admin.deleteMedicine', $medicine->id) }}">
                                 @csrf
                                 @method('DELETE')
@@ -73,5 +85,7 @@
             </tbody>
         </table>
     </section>
+    </div>
+    <script src="{{ asset('js/adminmed.js') }}"></script>
 </body>
 </html>

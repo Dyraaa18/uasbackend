@@ -12,20 +12,23 @@
     <
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center mb-4">CRUD DOKTER</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Dokter</h1>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light my-4">
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.medicines') }}">CRUD OBAT</a>
+                        <a class="nav-link" href="{{ route('admin.medicines') }}">OBAT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.bookings') }}">CRUD BOOKING</a>
+                        <a class="nav-link" href="{{ route('admin.bookings') }}">BOOKING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.antrians') }}">ANTRIAN</a>
                     </li>
                 </ul>
             </div>
@@ -40,14 +43,13 @@
             <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data" class="form-group">
                 @csrf
                 @if (isset($doctor))
-                    @method('PUT')
+                @method('PUT')
                 @endif
                 <input type="text" name="name" class="form-control mb-3" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required>
                 <input type="email" name="email" class="form-control mb-3" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required>
                 <input type="text" name="specialization" class="form-control mb-3" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required>
                 <input type="text" name="address" class="form-control mb-3" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required>
-                <input type="text" name="working_hours" class="form-control mb-3" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required>
-                
+                <input type="text" name="working_hours" class="form-control mb-3" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required>    
                 @if (isset($doctor) && $doctor->image)
                     <p>Gambar saat ini:</p>
                     <img src="{{ asset('images/' . $doctor->image) }}" alt="Gambar Dokter" class="mb-3">
@@ -76,13 +78,12 @@
                                 <input type="file" name="image" accept="image/*"><br><br>
                                 <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
                             </form>
-                        </td>
-                        <td>
                             <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Hapus</button>
                             </form>
+
                         </td>
                     </tr>
                 @endforeach
@@ -97,5 +98,6 @@
             });
         });
     </script>
+    <script src="{{ asset('js/admindokter.js') }}"></script>
 </body>
 </html>
