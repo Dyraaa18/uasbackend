@@ -11,11 +11,11 @@
     --secondary-color: #45a049;
     --hover-shadow: rgba(0, 123, 255, 0.15);
     --border-color: #ccc;
-    --bg-color: #f4f4f4; /* Background color adjusted for bookings */
+    --bg-color: #f4f4f4; /* Background color */
     --text-color: #333;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --nav-bg-color: #333; /* Navbar background color adjusted for bookings */
-    --nav-hover-color: #45a049; /* Navbar hover color adjusted for bookings */
+    --nav-bg-color: #333; /* Navbar background color */
+    --nav-hover-color: #45a049; /* Navbar hover color */
 }
 
 /* Global Styles */
@@ -25,7 +25,7 @@ body {
     padding: 20px;
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin: 0; /* Adjusted for bookings */
+    margin: 0; /* Adjusted */
 }
 
 /* Headings */
@@ -104,11 +104,6 @@ form button:hover {
 }
 
 /* Table Styles */
-.table-container {
-    display: flex;
-    justify-content: center;
-}
-
 .table {
     width: 100%;
     border-collapse: collapse;

@@ -9,13 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <
 </head>
 <body>
     <div class="container">
         <h1 class="text-center mb-4">CRUD DOKTER</h1>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -35,7 +34,7 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <section class="mb-4 form-section">
+        <section class="mb-4 form-section text-center">
             <h2 class="section-title">{{ isset($doctor) ? 'Edit Dokter' : 'Tambah Dokter' }}</h2>
             <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data" class="form-group">
                 @csrf
@@ -58,41 +57,41 @@
             </form>
         </section>
 
-        <section>
-        <!-- Tampilkan Daftar Dokter -->
-        <h2>Daftar Dokter</h2>
-        <table border="1">
-            <tbody>
-                @foreach($doctors as $doctor)
+        <section class="text-center">
+            <h2>Daftar Dokter</h2>
+            <table class="table">
+                <thead class="thead-dark">
                     <tr>
-                        <td>
-                            <!-- Form Tambah/Edit -->
-                            <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <input type="text" name="name" placeholder="Nama Dokter" value="{{ old('name', isset($doctor) ? $doctor->name : '') }}" required><br><br>
-                                <input type="email" name="email" placeholder="Email Dokter" value="{{ old('email', isset($doctor) ? $doctor->email : '') }}" required><br><br>
-                                <input type="text" name="specialization" placeholder="Spesialisasi" value="{{ old('specialization', isset($doctor) ? $doctor->specialization : '') }}" required><br><br>
-                                <input type="text" name="address" placeholder="Alamat" value="{{ old('address', isset($doctor) ? $doctor->address : '') }}" required><br><br>
-                                <input type="text" name="working_hours" placeholder="Jam Kerja" value="{{ old('working_hours', isset($doctor) ? $doctor->working_hours : '') }}" required><br><br>                           
-                                <input type="file" name="image" accept="image/*"><br><br>
-                                <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
-                            </form>
-
-                        </td>
-                        <td>
-                            <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Hapus</button>
-                            </form>
-                        </td>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Spesialisasi</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Jam Kerja</th>
+                        <th scope="col">Aksi</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </section>
+                </thead>
+                <tbody>
+                    @foreach($doctors as $doctor)
+                        <tr>
+                            <td>{{ $doctor->name }}</td>
+                            <td>{{ $doctor->email }}</td>
+                            <td>{{ $doctor->specialization }}</td>
+                            <td>{{ $doctor->address }}</td>
+                            <td>{{ $doctor->working_hours }}</td>
+                            <td>
+                                <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </section>
     </div>
+
     <script>
         $(document).ready(function(){
             $(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
