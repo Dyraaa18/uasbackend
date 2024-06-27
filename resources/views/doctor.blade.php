@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <input type="text" id="search" class="form-control" placeholder="Cari dokter...">
+                <input type="text" id="search" class="form-control" placeholder="Tenaga Medis...">
             </div>
             <div class="col-md-6 mb-3">
                 <select id="filter" class="form-control">

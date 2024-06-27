@@ -3,7 +3,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    
+    <script src="{{ asset('js/login.js') }}"></script>
 </head>
 <body>
 
@@ -33,7 +33,7 @@
                                         <input type="email" id="email" name="email" class="form-control form-control-lg" value="{{ old('email') }}" />
                                         <label class="form-label" for="email">Email address</label>
                                         @error('email')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div id="error" class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
@@ -41,7 +41,7 @@
                                         <input type="password" id="password" name="password" class="form-control form-control-lg" />
                                         <label class="form-label" for="password">Password</label>
                                         @error('password')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div id="error" class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
 
@@ -65,6 +65,6 @@
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>z
 </body>
 </html>

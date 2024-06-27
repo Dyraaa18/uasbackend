@@ -103,7 +103,7 @@
     <script>
     $(document).ready(function() {
         function attachBuyEvent() {
-            // Handle the buy button click
+            
             $('.buy-btn').off('click').on('click', function() {
                 var medicineId = $(this).data('medicine-id');
                 var price = $(this).data('price');
@@ -143,14 +143,14 @@
                 }
 
                 $('#medicine-list').html($medicines);
-                attachBuyEvent(); // Reattach buy event after sorting
+                attachBuyEvent(); 
             }
         }
 
         attachBuyEvent();
         sortMedicines();
 
-        // Handle the buy submit
+        
         $('#buySubmit').click(function() {
             var formData = $('#buyForm').serialize();
             $.ajax({
@@ -160,7 +160,7 @@
                 success: function(response) {
                     $('#buyModal').modal('hide');
                     alert('Pembelian berhasil!');
-                    location.reload(); // Refresh halaman setelah pembelian berhasil
+                    location.reload(); 
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
@@ -169,7 +169,7 @@
             });
         });
 
-        // Handle search
+        
         $('#search').on('input', function() {
             var searchValue = $(this).val().toLowerCase();
             $('.medicine-item').each(function() {
@@ -182,7 +182,7 @@
             });
         });
 
-        // Handle sort
+        
         $('#sort').change(function() {
             var sortValue = $(this).val();
             localStorage.setItem('sortValue', sortValue); // Save sort state
@@ -207,11 +207,9 @@
             }
 
             $('#medicine-list').html($medicines);
-            attachBuyEvent(); // Reattach buy event after sorting
+            attachBuyEvent(); 
         });
     });
 </script>
-
-
 </body>
 </html>

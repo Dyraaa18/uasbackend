@@ -42,7 +42,16 @@ class AntrianController extends Controller {
             'nomor_antrian' => $nomor_antrian,
         ]);
 
-        return redirect()->route('antrian.create');
+        $nama_poli = Poli::find($poli_id)->nama;
+
+        return redirect()->route('antrian.create')->with([
+            'success' => 'Antrian berhasil ditambahkan',
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'telepon' => $request->telepon,
+            'poli_name' => $nama_poli, // Simpan nama poli ke dalam sesi
+            'nomor_antrian' => $nomor_antrian
+        ]);
     }
     public function index() {
         $antrians = Antrian::with('poli')->get();
