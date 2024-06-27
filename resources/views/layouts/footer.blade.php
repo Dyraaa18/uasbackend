@@ -20,10 +20,10 @@
       <li class="social-icon__item"><a class="social-icon__link" href="https://www.facebook.com/adang.irawan.7146/">
           <ion-icon name="logo-facebook"></ion-icon>
         </a></li>
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
+      <li class="social-icon__item"><a class="social-icon__link" href="https://x.com/valenentino?s=09">
           <ion-icon name="logo-twitter"></ion-icon>
         </a></li>
-      <li class="social-icon__item"><a class="social-icon__link" href="#">
+      <li class="social-icon__item"><a class="social-icon__link" href="https://youtube.com/@danielhartono7512?si=0vjQZMN04u8GZSKS">
           <ion-icon name="logo-youtube"></ion-icon>
         </a></li>
       <li class="social-icon__item"><a class="social-icon__link" href="https://www.instagram.com/inikamiiniyandit?igsh=bnUxMmh4ZTNoYnQ2">
