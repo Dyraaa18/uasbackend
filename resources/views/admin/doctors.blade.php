@@ -59,14 +59,12 @@
         </section>
 
         <section>
-        <!-- Tampilkan Daftar Dokter -->
         <h2>Daftar Dokter</h2>
         <table border="1">
             <tbody>
                 @foreach($doctors as $doctor)
                     <tr>
                         <td>
-                            <!-- Form Tambah/Edit -->
                             <form method="POST" action="{{ isset($doctor) ? route('admin.updateDoctor', $doctor->id) : route('admin.storeDoctor') }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -78,7 +76,6 @@
                                 <input type="file" name="image" accept="image/*"><br><br>
                                 <button type="submit">{{ isset($doctor) ? 'Update' : 'Tambah' }}</button>
                             </form>
-
                         </td>
                         <td>
                             <form method="POST" action="{{ route('admin.deleteDoctor', $doctor->id) }}">

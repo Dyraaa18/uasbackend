@@ -10,21 +10,20 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // Fungsi untuk menampilkan form register
+    
     public function showRegistrationForm()
     {
         return view('register');
     }
 
-    // Fungsi untuk memproses registrasi
+    
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'terms' => 'accepted', // terms acceptance validation
+            'terms' => 'accepted', 
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users', // unique validation for email
-            'password' => 'required|string|min:8|confirmed', // confirmed validation for password and password_confirmation
-            
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ], [
             'email.unique' => 'Email sudah terdaftar. Gunakan email lain.',
             'password.min' => 'Password anda kurang panjang.',
@@ -72,17 +71,14 @@ class AuthController extends Controller
         
         if ($user) {
             if (Auth::guard('web')->attempt($credentials)) {
-                // Jika login sebagai user berhasil
                 $request->session()->regenerate();
                 return redirect()->intended('/');
             } else {
-                // Jika password salah
                 return back()->withErrors([
                     'password' => 'Password salah',
                 ])->withInput();
             }
         } else {
-            // Jika email tidak terdaftar
             return back()->withErrors([
                 'email' => 'Email tidak terdaftar',
             ])->withInput();

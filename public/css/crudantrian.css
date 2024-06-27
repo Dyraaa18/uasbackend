@@ -11,11 +11,11 @@
     --secondary-color: #45a049;
     --hover-shadow: rgba(0, 123, 255, 0.15);
     --border-color: #ccc;
-    --bg-color: #f4f4f4; /* Background color adjusted for CRUD Antrian */
+    --bg-color: #f7f7f7;
     --text-color: #333;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --nav-bg-color: #333; /* Navbar background color adjusted for CRUD Antrian */
-    --nav-hover-color: #45a049; /* Navbar hover color adjusted for CRUD Antrian */
+    --nav-bg-color: #ffffff;
+    --nav-hover-color: #eeeeee;
 }
 
 /* Global Styles */
@@ -25,7 +25,6 @@ body {
     padding: 20px;
     background-color: var(--bg-color);
     color: var(--text-color);
-    margin: 0; /* Adjusted for CRUD Antrian */
 }
 
 /* Headings */
@@ -38,8 +37,8 @@ h1, h2, h3 {
 /* Navigation */
 nav {
     background-color: var(--nav-bg-color);
-    color: white;
-    padding: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
     margin-bottom: 20px;
 }
 
@@ -51,12 +50,11 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+    margin: 0;
 }
 
 nav ul li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
     padding: 10px 20px;
@@ -104,7 +102,7 @@ form button:hover {
 }
 
 /* Table Styles */
-.table {
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -114,29 +112,28 @@ form button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.table th, .table td {
+table th, table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
-.table th {
+table th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
 
-.table td img {
+table td img {
     max-width: 100px;
     height: auto;
 }
 
 /* Custom Container Style */
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: inline-block;
     margin-bottom: 10px;
@@ -152,36 +149,21 @@ form button:hover {
     border: 1px solid #d6e9c6;
 }
 
-/* Card Styles (if applicable) */
-.card {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-top: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.card-text {
-    margin-bottom: 5px;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
+    text-align: center;
+    display: none;
 }

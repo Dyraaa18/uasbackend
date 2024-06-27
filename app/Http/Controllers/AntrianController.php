@@ -24,15 +24,15 @@ class AntrianController extends Controller {
         $tanggal = Carbon::now()->toDateString();
         $poli_id = $request->poli_id;
 
-        // Ambil nomor antrian terakhir untuk poli dan tanggal yang sama
+        
         $nomor_antrian_terakhir = Antrian::where('poli_id', $poli_id)
             ->where('tanggal', $tanggal)
             ->max('nomor_antrian');
 
-        // Tambahkan 1 untuk nomor antrian baru
+        
         $nomor_antrian = $nomor_antrian_terakhir ? $nomor_antrian_terakhir + 1 : 1;
 
-        // Simpan data antrian
+        
         Antrian::create([
             'nama' => $request->nama,
             'email' => $request->email,
@@ -49,7 +49,7 @@ class AntrianController extends Controller {
             'nama' => $request->nama,
             'email' => $request->email,
             'telepon' => $request->telepon,
-            'poli_name' => $nama_poli, // Simpan nama poli ke dalam sesi
+            'poli_name' => $nama_poli, 
             'nomor_antrian' => $nomor_antrian
         ]);
     }
@@ -58,7 +58,7 @@ class AntrianController extends Controller {
         return view('admin.antrians', compact('antrians'));
     }
 
-    // Menghapus antrian berdasarkan ID
+    
     public function destroy($id) {
         $antrian = Antrian::findOrFail($id);
         $antrian->delete();

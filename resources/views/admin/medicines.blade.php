@@ -17,13 +17,11 @@
         </ul>
     </nav>
 
-    <!-- Tampilkan Pesan Sukses -->
     @if(session('success'))
         <div>{{ session('success') }}</div>
     @endif
 
     <section>
-        <!-- Form Tambah/Edit Obat -->
         <h2>{{ isset($medicine) ? 'Edit Obat' : 'Tambah Obat' }}</h2>
         <form method="POST" action="{{ isset($medicine) ? route('admin.updateMedicine', $medicine->id) : route('admin.storeMedicine') }}" enctype="multipart/form-data">
             @csrf
@@ -46,7 +44,6 @@
     </section>
 
     <section>
-        <!-- Tampilkan Daftar Obat -->
         <h2>Daftar Obat</h2>
         <table border="1">
             <tbody>
