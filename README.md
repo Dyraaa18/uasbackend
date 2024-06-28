@@ -16,6 +16,10 @@ TUTORIAL LOGIN/REGISTER UNTUK ADMIN
 4.	Jika ter redirect ke /login saat button di klik, anda tinggal mengakses localhost:8000/admin/dashboard. Itu dikarenakan session awalnya adalah user.
 5.	Setelah itu akan masuk page admin dashboard.
 	
+akun admin yang sudah terdaftar di tabel admin postgres
+email : admin@gmail.com
+password : 12341234
+
 
 Mailer
 
